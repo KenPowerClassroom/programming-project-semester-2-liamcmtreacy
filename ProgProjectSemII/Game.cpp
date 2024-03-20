@@ -115,9 +115,21 @@ void Game::update()
 	// get keyboard input
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
+		myPlayer.moveLeft(); // calling move left function
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
+		myPlayer.moveRight(); // calling moveRight function
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		myPlayer.moveUp(); // calling move up function
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		myPlayer.moveDown(); // calling move down function
 	}
 
 	// update any game variables here ...

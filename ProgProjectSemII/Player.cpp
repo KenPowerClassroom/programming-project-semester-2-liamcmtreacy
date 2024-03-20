@@ -41,3 +41,47 @@ void Player::setPosition(int xPos, int yPos) // having the set Position of the s
 	m_playerSprite.setPosition(xPos, yPos);
 }
 
+void Player::moveLeft()
+{
+	sf::Vector2f pos(m_playerSprite.getPosition());
+	{
+		if (pos.x >=0)
+		{
+			pos.x = pos.x - speed;
+		}
+	}
+	m_playerSprite.setPosition(pos.x, pos.y);
+}
+
+void Player::moveRight()
+{
+	sf::Vector2f pos(m_playerSprite.getPosition());
+	{
+		if (pos.x <= SCREEN_WIDTH - 124)
+		{
+			pos.x = pos.x + speed;
+		}
+	}
+	m_playerSprite.setPosition(pos.x, pos.y);
+}
+
+void Player::moveUp()
+{
+	sf::Vector2f pos(m_playerSprite.getPosition());
+	if (pos.y >= 0)
+	{
+		pos.y = pos.y - speed;
+	}
+	m_playerSprite.setPosition(pos.x, pos.y);
+}
+
+void Player::moveDown()
+{
+	sf::Vector2f pos(m_playerSprite.getPosition());
+	if (pos.y <= SCREEN_HEIGHT - 100)
+	{
+		pos.y = pos.y + speed;
+	}
+	m_playerSprite.setPosition(pos.x, pos.y);
+}
+

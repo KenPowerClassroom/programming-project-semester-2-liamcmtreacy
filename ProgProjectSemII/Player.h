@@ -23,4 +23,8 @@ public:
 	sf::Sprite getBody();
 	void setPosition();
 	void setPosition(int xPos, int yPos);
+	void moveLeft();
+	void moveRight();
+	void moveUp();
+	void moveDown();
 };
