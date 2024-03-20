@@ -7,7 +7,7 @@ Player::Player()
 {
 	loadSprite();
 
-	image_width = 124;
+	image_width = 64;
 
 	int xPos = SCREEN_WIDTH / 2;
 	int yPos = SCREEN_HEIGHT / 2;
@@ -57,7 +57,7 @@ void Player::moveRight()
 {
 	sf::Vector2f pos(m_playerSprite.getPosition());
 	{
-		if (pos.x <= SCREEN_WIDTH - 124)
+		if (pos.x <= SCREEN_WIDTH - image_width)
 		{
 			pos.x = pos.x + speed;
 		}
@@ -78,7 +78,7 @@ void Player::moveUp()
 void Player::moveDown()
 {
 	sf::Vector2f pos(m_playerSprite.getPosition());
-	if (pos.y <= SCREEN_HEIGHT - 100)
+	if (pos.y <= SCREEN_HEIGHT - image_width)
 	{
 		pos.y = pos.y + speed;
 	}
@@ -87,19 +87,19 @@ void Player::moveDown()
 
 void Player::boundry(sf::Vector2f t_pos)
 {
-	if (t_pos.x < 0.0f)
+	if (t_pos.x <= 0.0f)
 	{
 		direction++;
 	}
-	if (t_pos.x > SCREEN_WIDTH + image_width)
+	if (t_pos.x > SCREEN_WIDTH - image_width)
 	{
 		direction--;
 	}
-	if (t_pos.y < 0.0f)
+	if (t_pos.y <= 0.0f)
 	{
 		direction++;
 	}
-	if (t_pos.y > SCREEN_HEIGHT + image_width)
+	if (t_pos.y > SCREEN_HEIGHT - image_width)
 	{
 		direction--;
 	}
