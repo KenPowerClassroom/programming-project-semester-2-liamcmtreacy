@@ -17,7 +17,7 @@ class Game
 	// array of enemy objects etc.
 
 	sf::RenderWindow window;
-
+	Player myPlayer;
 public:
 	sf::Font m_font;  // font for writing text
 	sf::Text m_message;  // text to write on the screen
