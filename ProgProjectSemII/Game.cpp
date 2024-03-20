@@ -1,6 +1,6 @@
-// Name: 
-// Login: 
-// Date: 
+// Name: Liam Treacy
+// Login: started MARCH 20th 2024 9:08am
+// Date: 20/03/24
 // Approximate time taken: 
 //---------------------------------------------------------------------------
 // Project description: TEMPLATE
@@ -32,6 +32,7 @@
 
 
 #include "Game.h"   // include Game header file
+#include "Player.h" 
 
 
 int main()
@@ -53,7 +54,7 @@ void Game::loadContent()
 {
 	if (!m_font.loadFromFile("ASSETS/FONTS/BebasNeue.otf"))
 	{
-		std::cout << "error with font file file";
+		std::cout << "error with font file file" << std::endl;
 	}
 
 	// set up the message string 
@@ -131,6 +132,6 @@ void Game::draw()
 
 	m_message.setString("Game Play");
 	window.draw(m_message);  // write message to the screen
-
+	window.draw(myPlayer.getBody());
 	window.display();
 }

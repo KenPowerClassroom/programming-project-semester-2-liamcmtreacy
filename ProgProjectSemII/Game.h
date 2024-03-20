@@ -9,7 +9,6 @@
 #include "Globals.h"   // include Global header file
 #include "Player.h"   // include Player header file
 
-
 class Game
 {
 	// private data members
