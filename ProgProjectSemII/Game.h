@@ -8,6 +8,7 @@
 
 #include "Globals.h"   // include Global header file
 #include "Player.h"   // include Player header file
+#include "enemyAA.h"
 
 class Game
 {
@@ -18,6 +19,8 @@ class Game
 
 	sf::RenderWindow window;
 	Player myPlayer;
+	enemyAA arrayAA[3];
+
 public:
 	sf::Font m_font;  // font for writing text
 	sf::Text m_message;  // text to write on the screen
@@ -32,4 +35,5 @@ public:	  // declaration of member functions
 	void	update();
 	void	draw();
 	void loadBackground();
+	void setUpAA();
 };

@@ -32,7 +32,8 @@
 
 
 #include "Game.h"   // include Game header file
-#include "Player.h" 
+#include "Player.h" // player header file
+#include "enemyAA.h" // enemyAA header file
 
 
 int main()
@@ -146,6 +147,10 @@ void Game::draw()
 	window.draw(m_message);  // write message to the screen
 	window.draw(myPlayer.getBody()); // draw the player character
 	window.draw(BGSprite); // draw the Sprite for background
+	for (int index = 0; index < MAXAA; index++)
+	{
+		window.draw(arrayAA[index].getEnemyBody());
+	}
 	window.display();
 }
 
@@ -157,4 +162,11 @@ void Game::loadBackground()
 	}
 	BGTexture.setRepeated(true); // always showing
 	BGSprite.setTexture(BGTexture); // setTexture and Sprite together
+}
+
+void Game::setUpAA()
+{
+	arrayAA[0].setPositionAA(500.0f, 440.0f);
+	arrayAA[1].setPositionAA(900.0f, 550.0f);
+	arrayAA[2].setPositionAA(300.0f, 660.0f);
 }
