@@ -27,4 +27,5 @@ public:
 	void moveRight();
 	void moveUp();
 	void moveDown();
+	void boundry(sf::Vector2f t_pos);
 };

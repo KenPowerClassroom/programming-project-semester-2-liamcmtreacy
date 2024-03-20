@@ -85,3 +85,23 @@ void Player::moveDown()
 	m_playerSprite.setPosition(pos.x, pos.y);
 }
 
+void Player::boundry(sf::Vector2f t_pos)
+{
+	if (t_pos.x < 0.0f)
+	{
+		direction++;
+	}
+	if (t_pos.x > SCREEN_WIDTH + image_width)
+	{
+		direction--;
+	}
+	if (t_pos.y < 0.0f)
+	{
+		direction++;
+	}
+	if (t_pos.y > SCREEN_HEIGHT + image_width)
+	{
+		direction--;
+	}
+}
+

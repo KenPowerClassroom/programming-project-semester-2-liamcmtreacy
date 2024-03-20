@@ -144,6 +144,17 @@ void Game::draw()
 
 	m_message.setString("Game Play");
 	window.draw(m_message);  // write message to the screen
-	window.draw(myPlayer.getBody());
+	window.draw(myPlayer.getBody()); // draw the player character
+	window.draw(BGSprite); // draw the Sprite for background
 	window.display();
+}
+
+void Game::loadBackground()
+{
+	(!BGTexture.loadFromFile("ASSETS\\SPRITES\\floor.png"));
+	{
+		std::cout << "error loading the background image" << std::endl; // error message if background fails
+	}
+	BGTexture.setRepeated(true); // always showing
+	BGSprite.setTexture(BGTexture); // setTexture and Sprite together
 }
