@@ -132,7 +132,6 @@ void Game::update()
 	}
 
 	// update any game variables here ...
-
 }
 
 void Game::draw()

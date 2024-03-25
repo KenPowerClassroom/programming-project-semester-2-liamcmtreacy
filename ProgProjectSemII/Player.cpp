@@ -38,7 +38,7 @@ void Player::setPosition(int xPos, int yPos) // having the set Position of the s
 
 void Player::moveLeft()
 {
-	if (!m_playerLeft.loadFromFile("ASSETS\\SPRITES\\player_left.png")) // error checking
+	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_left.png")) // error checking
 	{
 		std::cout << "error loading the player character" << std::endl;
 	}
@@ -57,7 +57,7 @@ void Player::moveLeft()
 void Player::moveRight()
 {
 
-	if (!m_playerRight.loadFromFile("ASSETS\\SPRITES\\player_right.png")) // error checking
+	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_right.png")) // error checking
 	{
 		std::cout << "error loading the player character" << std::endl;
 	}
@@ -73,7 +73,7 @@ void Player::moveRight()
 
 void Player::moveUp()
 {
-	if (!m_playerUp.loadFromFile("ASSETS\\SPRITES\\player_up.png")) // error checking
+	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_up.png")) // error checking
 	{
 		std::cout << "error loading the player character" << std::endl;
 	}
@@ -89,13 +89,14 @@ void Player::moveUp()
 
 void Player::moveDown()
 {
-	if (!m_playerUp.loadFromFile("ASSETS\\SPRITES\\player_up.png")) // error checking
+	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_down.png")) // error checking
 	{
 		std::cout << "error loading the player character" << std::endl;
 	}
 
 	m_playerSprite.setTexture(m_playerTexture);
 	sf::Vector2f pos(m_playerSprite.getPosition());
+
 
 	if (pos.y <= SCREEN_HEIGHT - image_width)
 	{
