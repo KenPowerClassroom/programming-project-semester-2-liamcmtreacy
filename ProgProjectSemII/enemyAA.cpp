@@ -2,6 +2,7 @@
 
 enemyAA::enemyAA()
 {
+	// basic info
 	loadEnemy();
 	moveAA();
 
@@ -17,36 +18,42 @@ void enemyAA::loadEnemy()
 	{
 		std::cout << "error loading your first enemy " << std::endl;
 	}
-	m_AAEnemySprite.setTexture(m_AAEnemyTexture);
+	m_AAEnemySprite.setTexture(m_AAEnemyTexture); // loading AA
 }
 
 sf::Sprite enemyAA::getEnemyBody()
 {
-	return m_AAEnemySprite;
+	return m_AAEnemySprite; // returning the sprite
 }
 
 void enemyAA::setPositionAA()
 {
-	m_AAEnemySprite.setPosition(100, 550);
+	m_AAEnemySprite.setPosition(100, 550); // set position of AA
+}
+
+void enemyAA::setPositionAA(int xPos, int yPos)
+{
+	m_AAEnemySprite.setPosition(xPos, yPos);
 }
 
 void enemyAA::moveAA()
 {
 	sf::Vector2f pos(m_AAEnemySprite.getPosition());
 
-	if (direction == EAST)
+	if (direction == EAST) // moving left
 	{
 		pos.x = pos.x + speed;
 	}
-	if (direction == WEST)
+	if (direction == WEST) // moving right
 	{
 		pos.x = pos.x - speed;
-	}
+	} 
+	// moving up
 	if (direction == NORTH)
 	{
 		pos.y = pos.y - speed;
 	}
-	if (direction == SOUTH)
+	if (direction == SOUTH) // moving down
 	{
 		pos.y = pos.y + speed;
 	}

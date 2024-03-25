@@ -19,6 +19,7 @@ class Game
 
 	Player myPlayer;
 	enemyAA arrayAA[3];
+	enemyAA AAenemy;
 
 	sf::RenderWindow window;
 

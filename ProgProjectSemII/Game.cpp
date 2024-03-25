@@ -132,6 +132,7 @@ void Game::update()
 	}
 
 	// update any game variables here ...
+	AAenemy.moveAA();
 }
 
 void Game::draw()
@@ -146,7 +147,7 @@ void Game::draw()
 	window.draw(BGSprite); // draw the Sprite for background
 	for (int index = 0; index < MAXAA; index++)
 	{
-		window.draw(arrayAA[index].getEnemyBody());
+		window.draw(arrayAA[index].getEnemyBody()); // array drawing
 	}
 	window.display();
 }
@@ -161,6 +162,9 @@ void Game::loadBackground()
 	BGSprite.setTexture(BGTexture); // setTexture and Sprite together
 }
 
-void Game::setUpAA()
+void Game::setUpAA() // set up positions
 {
+	arrayAA[0].setPositionAA(100, 500);
+	arrayAA[1].setPositionAA(400, 400);
+	arrayAA[2].setPositionAA(800, 0);
 }

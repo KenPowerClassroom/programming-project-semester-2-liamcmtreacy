@@ -38,7 +38,7 @@ void Player::setPosition(int xPos, int yPos) // having the set Position of the s
 
 void Player::moveLeft()
 {
-	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_left.png")) // error checking
+	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_left.png")) // error checking and also loading the left sprite
 	{
 		std::cout << "error loading the player character" << std::endl;
 	}
@@ -57,7 +57,7 @@ void Player::moveLeft()
 void Player::moveRight()
 {
 
-	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_right.png")) // error checking
+	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_right.png")) // error checking and also loading the right sprite
 	{
 		std::cout << "error loading the player character" << std::endl;
 	}
@@ -73,7 +73,7 @@ void Player::moveRight()
 
 void Player::moveUp()
 {
-	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_up.png")) // error checking
+	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_up.png")) // error checking plus loading up sprite
 	{
 		std::cout << "error loading the player character" << std::endl;
 	}
@@ -89,7 +89,7 @@ void Player::moveUp()
 
 void Player::moveDown()
 {
-	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_down.png")) // error checking
+	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_down.png")) // error checking plus loading down sprite
 	{
 		std::cout << "error loading the player character" << std::endl;
 	}
@@ -108,11 +108,12 @@ void Player::moveDown()
 
 sf::Sprite Player::getBody() // get body
 {
-	return m_playerSprite;
+	return m_playerSprite; // return sprite body
 }
 
 void Player::boundry(sf::Vector2f t_pos)
 {
+	// boundry checking
 	if (t_pos.x <= 0.0f)
 	{
 		direction++;
