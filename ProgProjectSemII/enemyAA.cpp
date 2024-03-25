@@ -5,6 +5,7 @@ enemyAA::enemyAA()
 	loadEnemy();
 	moveAA();
 
+	setPositionAA();
 	strength = 2;
 	speed = 4;
 	enemyAlive = true;
@@ -24,16 +25,29 @@ sf::Sprite enemyAA::getEnemyBody()
 	return m_AAEnemySprite;
 }
 
-void enemyAA::moveAA()
-{
-}
-
 void enemyAA::setPositionAA()
 {
-	setPositionAA();
+	m_AAEnemySprite.setPosition(100, 550);
 }
 
-void enemyAA::setPositionAA(int posX, int posY)
+void enemyAA::moveAA()
 {
-	setPositionAA(posX, posY);
+	sf::Vector2f pos(m_AAEnemySprite.getPosition());
+
+	if (direction == EAST)
+	{
+		pos.x = pos.x + speed;
+	}
+	if (direction == WEST)
+	{
+		pos.x = pos.x - speed;
+	}
+	if (direction == NORTH)
+	{
+		pos.y = pos.y - speed;
+	}
+	if (direction == SOUTH)
+	{
+		pos.y = pos.y + speed;
+	}
 }

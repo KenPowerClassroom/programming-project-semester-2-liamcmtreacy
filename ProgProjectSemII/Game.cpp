@@ -32,8 +32,6 @@
 
 
 #include "Game.h"   // include Game header file
-#include "Player.h" // player header file
-#include "enemyAA.h" // enemyAA header file
 
 
 int main()
@@ -102,7 +100,7 @@ void Game::run()
 		{
 			update();
 			draw();
-
+			setUpAA();
 			// reset the timeSinceLastUpdate to 0 
 			timeSinceLastUpdate = sf::Time::Zero;
 		}
@@ -166,7 +164,4 @@ void Game::loadBackground()
 
 void Game::setUpAA()
 {
-	arrayAA[0].setPositionAA(500.0f, 440.0f);
-	arrayAA[1].setPositionAA(900.0f, 550.0f);
-	arrayAA[2].setPositionAA(300.0f, 660.0f);
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "Globals.h"
-#include<iostream>
+#include <iostream>
 
 class enemyAA
 {
@@ -18,9 +18,9 @@ public:
 
 	enemyAA();
 	void loadEnemy();
+
 	sf::Sprite getEnemyBody();
 	void setPositionAA();
-	void setPositionAA(int posX, int posY);
 	void moveAA();
 
 };

@@ -17,9 +17,10 @@ class Game
 	// put your game objects here eg player object and 
 	// array of enemy objects etc.
 
-	sf::RenderWindow window;
 	Player myPlayer;
 	enemyAA arrayAA[3];
+
+	sf::RenderWindow window;
 
 public:
 	sf::Font m_font;  // font for writing text

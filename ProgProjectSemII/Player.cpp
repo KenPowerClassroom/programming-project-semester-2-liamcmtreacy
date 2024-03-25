@@ -26,11 +26,6 @@ void Player::loadSprite()
 	m_playerSprite.setTexture(m_playerTexture); // player sprite merging with texture
 }
 
-sf::Sprite Player::getBody() // get body
-{
-	return m_playerSprite;
-}
-
 void Player::setPosition() // having the set Position of the sprite
 {
 	m_playerSprite.setPosition(400.0f, 400.0f);
@@ -43,6 +38,12 @@ void Player::setPosition(int xPos, int yPos) // having the set Position of the s
 
 void Player::moveLeft()
 {
+	if (!m_playerLeft.loadFromFile("ASSETS\\SPRITES\\player_left.png")) // error checking
+	{
+		std::cout << "error loading the player character" << std::endl;
+	}
+	m_playerSprite.setTexture(m_playerTexture);
+
 	sf::Vector2f pos(m_playerSprite.getPosition());
 	{
 		if (pos.x >=0)
@@ -55,18 +56,29 @@ void Player::moveLeft()
 
 void Player::moveRight()
 {
-	sf::Vector2f pos(m_playerSprite.getPosition());
+
+	if (!m_playerRight.loadFromFile("ASSETS\\SPRITES\\player_right.png")) // error checking
 	{
-		if (pos.x <= SCREEN_WIDTH - image_width)
+		std::cout << "error loading the player character" << std::endl;
+	}
+
+	m_playerSprite.setTexture(m_playerTexture);
+	sf::Vector2f pos(m_playerSprite.getPosition());
+		if (pos.x <= SCREEN_WIDTH - PLAYER_WIDTH)
 		{
 			pos.x = pos.x + speed;
 		}
-	}
-	m_playerSprite.setPosition(pos.x, pos.y);
+		m_playerSprite.setPosition(pos.x, pos.y);
 }
 
 void Player::moveUp()
 {
+	if (!m_playerUp.loadFromFile("ASSETS\\SPRITES\\player_up.png")) // error checking
+	{
+		std::cout << "error loading the player character" << std::endl;
+	}
+	m_playerSprite.setTexture(m_playerTexture);
+
 	sf::Vector2f pos(m_playerSprite.getPosition());
 	if (pos.y >= 0)
 	{
@@ -77,12 +89,25 @@ void Player::moveUp()
 
 void Player::moveDown()
 {
+	if (!m_playerUp.loadFromFile("ASSETS\\SPRITES\\player_up.png")) // error checking
+	{
+		std::cout << "error loading the player character" << std::endl;
+	}
+
+	m_playerSprite.setTexture(m_playerTexture);
 	sf::Vector2f pos(m_playerSprite.getPosition());
+
 	if (pos.y <= SCREEN_HEIGHT - image_width)
 	{
 		pos.y = pos.y + speed;
 	}
 	m_playerSprite.setPosition(pos.x, pos.y);
+}
+
+
+sf::Sprite Player::getBody() // get body
+{
+	return m_playerSprite;
 }
 
 void Player::boundry(sf::Vector2f t_pos)
