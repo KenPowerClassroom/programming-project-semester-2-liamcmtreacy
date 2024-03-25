@@ -62,6 +62,7 @@ void Game::loadContent()
 	m_message.setFillColor(sf::Color::White); // set the text colour
 	m_message.setPosition(10, 10);  // its position on the screen
 
+	loadBackground();
 }
 
 
@@ -142,9 +143,9 @@ void Game::draw()
 	window.clear();
 
 	m_message.setString("Game Play");
+	window.draw(BGSprite); // draw the Sprite for background
 	window.draw(m_message);  // write message to the screen
 	window.draw(myPlayer.getBody()); // draw the player character
-	window.draw(BGSprite); // draw the Sprite for background
 	for (int index = 0; index < MAXAA; index++)
 	{
 		window.draw(arrayAA[index].getEnemyBody()); // array drawing
@@ -160,6 +161,7 @@ void Game::loadBackground()
 	}
 	BGTexture.setRepeated(true); // always showing
 	BGSprite.setTexture(BGTexture); // setTexture and Sprite together
+	BGSprite.setTextureRect(sf::IntRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
 }
 
 void Game::setUpAA() // set up positions

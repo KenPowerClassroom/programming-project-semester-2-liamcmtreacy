@@ -40,21 +40,4 @@ void enemyAA::moveAA()
 {
 	sf::Vector2f pos(m_AAEnemySprite.getPosition());
 
-	if (direction == EAST) // moving left
-	{
-		pos.x = pos.x + speed;
-	}
-	if (direction == WEST) // moving right
-	{
-		pos.x = pos.x - speed;
-	} 
-	// moving up
-	if (direction == NORTH)
-	{
-		pos.y = pos.y - speed;
-	}
-	if (direction == SOUTH) // moving down
-	{
-		pos.y = pos.y + speed;
-	}
 }
