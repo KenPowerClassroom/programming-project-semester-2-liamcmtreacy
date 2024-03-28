@@ -132,3 +132,10 @@ void Player::boundry(sf::Vector2f t_pos)
 	}
 }
 
+void Player::shoot()
+{
+
+
+
+}
+

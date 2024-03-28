@@ -27,6 +27,10 @@ public:
 	sf::Font m_font;  // font for writing text
 	sf::Text m_message;  // text to write on the screen
 
+	sf::Text m_score;
+	sf::Text m_lives;
+	sf::Text m_enemiesKilled;
+
 	sf::Sprite BGSprite;
 	sf::Texture BGTexture;
 

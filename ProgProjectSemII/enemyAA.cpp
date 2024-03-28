@@ -38,6 +38,5 @@ void enemyAA::setPositionAA(int xPos, int yPos)
 
 void enemyAA::moveAA()
 {
-	sf::Vector2f pos(m_AAEnemySprite.getPosition());
 
 }

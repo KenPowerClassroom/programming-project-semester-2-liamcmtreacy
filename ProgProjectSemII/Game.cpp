@@ -62,6 +62,22 @@ void Game::loadContent()
 	m_message.setFillColor(sf::Color::White); // set the text colour
 	m_message.setPosition(10, 10);  // its position on the screen
 
+	m_score.setFont(m_font);  // set the font for the text
+	m_score.setCharacterSize(24); // text size
+	m_score.setFillColor(sf::Color::White); // color
+	m_score.setPosition(10, 40);  // score total and its position on the screen
+
+	m_lives.setFont(m_font);  // text font
+	m_lives.setCharacterSize(24); //text size
+	m_lives.setFillColor(sf::Color::White); // setting the color white for the text
+	m_lives.setPosition(10, 70);  // position next to the score and message
+
+	m_enemiesKilled.setFont(m_font);  // set the font for the text
+	m_enemiesKilled.setCharacterSize(24); // set the text size
+	m_enemiesKilled.setFillColor(sf::Color::White); // set the text colour
+	m_enemiesKilled.setPosition(10, 100);  // its position on the screen
+
+
 	loadBackground();
 }
 
@@ -143,7 +159,13 @@ void Game::draw()
 	window.clear();
 
 	m_message.setString("Game Play");
+	m_score.setString("Score: ");
+	m_lives.setString("Lives: ");
+	m_enemiesKilled.setString("Enemies Killed: ");
 	window.draw(BGSprite); // draw the Sprite for background
+	window.draw(m_score); // write score to the screen
+	window.draw(m_lives);
+	window.draw(m_enemiesKilled);
 	window.draw(m_message);  // write message to the screen
 	window.draw(myPlayer.getBody()); // draw the player character
 	for (int index = 0; index < MAXAA; index++)
