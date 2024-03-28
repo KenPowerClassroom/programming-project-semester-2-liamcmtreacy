@@ -9,6 +9,7 @@
 #include "Globals.h"   // include Global header file
 #include "Player.h"   // include Player header file
 #include "enemyAA.h"
+#include "RustyRaymond.h"
 
 class Game
 {
@@ -18,8 +19,9 @@ class Game
 	// array of enemy objects etc.
 
 	Player myPlayer;
-	enemyAA arrayAA[3];
 	enemyAA AAenemy;
+	enemyAA arrayAA[3];
+	enemyRR RRenemy;
 
 	sf::RenderWindow window;
 

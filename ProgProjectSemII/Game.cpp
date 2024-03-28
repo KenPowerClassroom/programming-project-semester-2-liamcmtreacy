@@ -32,6 +32,8 @@
 
 
 #include "Game.h"   // include Game header file
+#include "enemyAA.h"
+#include "RustyRaymond.h"
 
 
 int main()
@@ -147,9 +149,8 @@ void Game::update()
 	{
 		myPlayer.moveDown(); // calling move down function
 	}
-
-	// update any game variables here ...
 	AAenemy.moveAA();
+	// update any game variables here 
 }
 
 void Game::draw()
@@ -168,6 +169,8 @@ void Game::draw()
 	window.draw(m_enemiesKilled);
 	window.draw(m_message);  // write message to the screen
 	window.draw(myPlayer.getBody()); // draw the player character
+	window.draw(RRenemy.getRRbody());
+
 	for (int index = 0; index < MAXAA; index++)
 	{
 		window.draw(arrayAA[index].getEnemyBody()); // array drawing
@@ -188,7 +191,10 @@ void Game::loadBackground()
 
 void Game::setUpAA() // set up positions
 {
-	arrayAA[0].setPositionAA(100, 500);
-	arrayAA[1].setPositionAA(400, 400);
-	arrayAA[2].setPositionAA(800, 0);
+	for (int index = 0; index < MAXAA; index++)
+	{
+		arrayAA[0].setPositionAA(300, 300);
+		arrayAA[1].setPositionAA(480, 100);
+		arrayAA[2].setPositionAA(1400, 250);
+	}
 }

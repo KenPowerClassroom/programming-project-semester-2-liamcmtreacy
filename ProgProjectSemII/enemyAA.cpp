@@ -1,10 +1,10 @@
 #include "enemyAA.h"
+#include "Game.h"
 
 enemyAA::enemyAA()
 {
 	// basic info
 	loadEnemy();
-	moveAA();
 
 	setPositionAA();
 	strength = 2;
@@ -38,5 +38,37 @@ void enemyAA::setPositionAA(int xPos, int yPos)
 
 void enemyAA::moveAA()
 {
+		sf::Vector2f pos(m_AAEnemySprite.getPosition());
 
+		for (int index = 0; index < MAXAA; index++)
+		{
+			if (direction == EAST)
+			{
+				pos.x = pos.x + speed;
+			}
+			if (direction == WEST)
+			{
+				pos.x = pos.x - speed;
+			}
+			m_AAEnemySprite.setPosition(pos);
+		}
+}
+
+void enemyAA::checkBoundry(sf::Vector2f t_pos)
+{
+	{
+		if (t_pos.x < 0.0f)
+		{
+			direction++;
+		}
+		if (t_pos.x > SCREEN_WIDTH - ENEMY_WIDTH)
+		{
+			direction--;
+		}
+	}
+}
+
+void enemyAA::setDirectionAA()
+{
+	direction = (rand() % 2) + 1;
 }

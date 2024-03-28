@@ -9,6 +9,7 @@ const int static SOUTH = 4; // south
 const int MAXAA = 3;
 
 const int PLAYER_WIDTH = 64;
+const int ENEMY_WIDTH = 64;
 
 const float SCREEN_WIDTH = 1500;   // the size of the screen in pixels used in the game
 const float SCREEN_HEIGHT = 800; // how tall the screen is 

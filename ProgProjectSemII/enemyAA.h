@@ -23,5 +23,6 @@ public:
 	void setPositionAA(); // set position for the enemy AA
 	void setPositionAA(int xPos, int yPos); // set position for the enemy AA
 	void moveAA(); // allows movement
-
+	void checkBoundry(sf::Vector2f t_pos);
+	void setDirectionAA(); // Random Direction
 };
