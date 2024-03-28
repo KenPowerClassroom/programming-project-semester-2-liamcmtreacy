@@ -20,7 +20,7 @@ class Game
 
 	Player myPlayer;
 	enemyAA AAenemy;
-	enemyAA arrayAA[3];
+	enemyAA arrayAA[3]; // get one object working before adding an array of objects
 	enemyRR RRenemy;
 
 	sf::RenderWindow window;
