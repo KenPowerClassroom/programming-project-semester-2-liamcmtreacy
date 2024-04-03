@@ -10,7 +10,10 @@ enemyAA::enemyAA()
 	strength = 2;
 	speed = 4;
 	enemyAlive = true;
+<<<<<<< HEAD
 	image_width = 64;
+=======
+>>>>>>> af7cf51ee158c7322edb9ced3293ed30aa8f01da
 	direction = EAST;
 }
 
@@ -42,7 +45,12 @@ void enemyAA::moveAA()
 {
 		sf::Vector2f pos(m_AAEnemySprite.getPosition());
 
+<<<<<<< HEAD
 		if (direction == EAST)
+=======
+
+		for (int index = 0; index < MAXAA; index++) //this loop is not needed
+>>>>>>> af7cf51ee158c7322edb9ced3293ed30aa8f01da
 		{
 			pos.x = pos.x + speed;
 		}
