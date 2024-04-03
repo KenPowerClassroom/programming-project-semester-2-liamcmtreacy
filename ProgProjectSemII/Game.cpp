@@ -32,8 +32,8 @@
 
 
 #include "Game.h"   // include Game header file
-#include "enemyAA.h"
-#include "RustyRaymond.h"
+#include "enemyAA.h" // enemyAA header
+#include "RustyRaymond.h" //RR header
 
 
 int main()
@@ -79,7 +79,7 @@ void Game::loadContent()
 	m_enemiesKilled.setFillColor(sf::Color::White); // set the text colour
 	m_enemiesKilled.setPosition(10, 100);  // its position on the screen
 
-
+	setUpAA();
 	loadBackground();
 }
 
@@ -119,7 +119,6 @@ void Game::run()
 		{
 			update();
 			draw();
-			setUpAA();
 			// reset the timeSinceLastUpdate to 0 
 			timeSinceLastUpdate = sf::Time::Zero;
 		}
@@ -149,8 +148,11 @@ void Game::update()
 	{
 		myPlayer.moveDown(); // calling move down function
 	}
-	AAenemy.moveAA();
 	// update any game variables here 
+	AAenemy.moveAA();
+	arrayAA[0].moveAA();
+	arrayAA[1].moveAA();
+	arrayAA[2].moveAA();
 }
 
 void Game::draw()
@@ -169,12 +171,12 @@ void Game::draw()
 	window.draw(m_enemiesKilled);
 	window.draw(m_message);  // write message to the screen
 	window.draw(myPlayer.getBody()); // draw the player character
-	window.draw(RRenemy.getRRbody());
-
-	for (int index = 0; index < MAXAA; index++)
+	window.draw(AAenemy.getEnemyBody());
+	for (int plus = 0; plus < MAXAA; plus++)
 	{
-		window.draw(arrayAA[index].getEnemyBody()); // array drawing
+		window.draw(arrayAA[plus].getEnemyBody());
 	}
+	window.draw(RRenemy.getRRbody());
 	window.display();
 }
 
@@ -197,4 +199,9 @@ void Game::setUpAA() // set up positions
 		arrayAA[1].setPositionAA(480, 100);
 		arrayAA[2].setPositionAA(1400, 250);
 	}
+}
+
+void Game::setUpRR()
+{
+	RRenemy.setPositionRR(550, 500);
 }

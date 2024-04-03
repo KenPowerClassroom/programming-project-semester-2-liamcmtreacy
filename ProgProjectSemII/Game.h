@@ -44,4 +44,5 @@ public:	  // declaration of member functions
 	void	draw();
 	void loadBackground();
 	void setUpAA();
+	void setUpRR();
 };

@@ -10,6 +10,8 @@ enemyAA::enemyAA()
 	strength = 2;
 	speed = 4;
 	enemyAlive = true;
+	image_width = 64;
+	direction = EAST;
 }
 
 void enemyAA::loadEnemy()
@@ -40,28 +42,26 @@ void enemyAA::moveAA()
 {
 		sf::Vector2f pos(m_AAEnemySprite.getPosition());
 
-		for (int index = 0; index < MAXAA; index++)
+		if (direction == EAST)
 		{
-			if (direction == EAST)
-			{
-				pos.x = pos.x + speed;
-			}
-			if (direction == WEST)
-			{
-				pos.x = pos.x - speed;
-			}
-			m_AAEnemySprite.setPosition(pos);
+			pos.x = pos.x + speed;
 		}
+		if (direction == WEST)
+		{
+			pos.x = pos.x - speed;
+		}
+		m_AAEnemySprite.setPosition(pos);
 }
 
 void enemyAA::checkBoundry(sf::Vector2f t_pos)
 {
 	{
-		if (t_pos.x < 0.0f)
+		if (t_pos.x <= 0.0f)
 		{
 			direction++;
 		}
-		if (t_pos.x > SCREEN_WIDTH - ENEMY_WIDTH)
+
+		if (t_pos.x > SCREEN_WIDTH - image_width)
 		{
 			direction--;
 		}
