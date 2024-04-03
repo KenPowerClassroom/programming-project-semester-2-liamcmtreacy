@@ -153,6 +153,11 @@ void Game::update()
 	arrayAA[0].moveAA();
 	arrayAA[1].moveAA();
 	arrayAA[2].moveAA();
+
+	AAenemy.checkBoundry(AAenemy.getEnemyBody().getPosition());
+	arrayAA[0].checkBoundry(arrayAA[0].getEnemyBody().getPosition());
+	arrayAA[1].checkBoundry(arrayAA[1].getEnemyBody().getPosition());
+	arrayAA[2].checkBoundry(arrayAA[2].getEnemyBody().getPosition());
 }
 
 void Game::draw()
