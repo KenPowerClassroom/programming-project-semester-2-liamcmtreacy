@@ -119,11 +119,6 @@ void Game::run()
 		{
 			update();
 			draw();
-<<<<<<< HEAD
-=======
-			setUpAA(); // don't do setup inside game loop, this should be done BEFORE the game loop
-			
->>>>>>> af7cf51ee158c7322edb9ced3293ed30aa8f01da
 			// reset the timeSinceLastUpdate to 0 
 			timeSinceLastUpdate = sf::Time::Zero;
 		}
@@ -176,20 +171,13 @@ void Game::draw()
 	window.draw(m_enemiesKilled);
 	window.draw(m_message);  // write message to the screen
 	window.draw(myPlayer.getBody()); // draw the player character
-<<<<<<< HEAD
 	window.draw(AAenemy.getEnemyBody());
-	for (int plus = 0; plus < MAXAA; plus++)
-=======
 	window.draw(RRenemy.getRRbody());
 
-	window.draw(AAenemy.getEnemyBody());
-
-	for (int index = 0; index < MAXAA; index++)
->>>>>>> af7cf51ee158c7322edb9ced3293ed30aa8f01da
+	for (int plus = 0; plus < MAXAA; plus++)
 	{
 		window.draw(arrayAA[plus].getEnemyBody());
 	}
-	window.draw(RRenemy.getRRbody());
 	window.display();
 }
 
