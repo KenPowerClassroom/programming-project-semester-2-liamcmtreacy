@@ -201,19 +201,17 @@ void Game::loadBackground()
 
 void Game::setUpAA() // set up positions
 {
-	for (int index = 0; index < MAXAA; index++)
-	{
+
 		arrayAA[0].setPositionAA(300, 300);
 		arrayAA[1].setPositionAA(480, 100);
 		arrayAA[2].setPositionAA(1400, 250);
-	}
+	
 }
 
 void Game::setUpRR()
 {
-	for (int index = 0; index < MAXRR; index++)
-	{
+
 		arrayRR[0].setPositionRR(550, 500);
 		arrayRR[1].setPositionRR(650, 330);
-	}
+	
 }

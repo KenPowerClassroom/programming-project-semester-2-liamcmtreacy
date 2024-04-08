@@ -24,6 +24,21 @@ void Player::loadSprite()
 		std::cout << "error loading the player character" << std::endl;
 	}
 	m_playerSprite.setTexture(m_playerTexture); // player sprite merging with texture
+
+	if (!m_playerLeftTexture.loadFromFile("ASSETS\\SPRITES\\player_left.png")) // error checking and also loading the left sprite
+	{
+		std::cout << "error loading the player character" << std::endl;
+	}
+
+	if (!m_playerRightTexture.loadFromFile("ASSETS\\SPRITES\\player_right.png")) // error checking and also loading the right sprite
+	{
+		std::cout << "error loading the player character" << std::endl;
+	}
+
+	if (!m_playerUpTexture.loadFromFile("ASSETS\\SPRITES\\player_up.png")) // error checking plus loading up sprite
+	{
+		std::cout << "error loading the player character" << std::endl;
+	}
 }
 
 void Player::setPosition() // having the set Position of the sprite
@@ -38,12 +53,7 @@ void Player::setPosition(int xPos, int yPos) // having the set Position of the s
 
 void Player::moveLeft()
 {
-	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_left.png")) // error checking and also loading the left sprite
-	{
-		std::cout << "error loading the player character" << std::endl;
-	}
-	m_playerSprite.setTexture(m_playerTexture);
-
+	m_playerSprite.setTexture(m_playerLeftTexture);
 	sf::Vector2f pos(m_playerSprite.getPosition());
 	{
 		if (pos.x >=0)
@@ -56,13 +66,7 @@ void Player::moveLeft()
 
 void Player::moveRight()
 {
-
-	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_right.png")) // error checking and also loading the right sprite
-	{
-		std::cout << "error loading the player character" << std::endl;
-	}
-
-	m_playerSprite.setTexture(m_playerTexture);
+	m_playerSprite.setTexture(m_playerRightTexture);
 	sf::Vector2f pos(m_playerSprite.getPosition());
 		if (pos.x <= SCREEN_WIDTH - PLAYER_WIDTH)
 		{
@@ -73,12 +77,7 @@ void Player::moveRight()
 
 void Player::moveUp()
 {
-	if (!m_playerTexture.loadFromFile("ASSETS\\SPRITES\\player_up.png")) // error checking plus loading up sprite
-	{
-		std::cout << "error loading the player character" << std::endl;
-	}
-	m_playerSprite.setTexture(m_playerTexture);
-
+	m_playerSprite.setTexture(m_playerUpTexture);
 	sf::Vector2f pos(m_playerSprite.getPosition());
 	if (pos.y >= 0)
 	{

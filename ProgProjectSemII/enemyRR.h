@@ -6,13 +6,13 @@
 
 class enemyRR
 {
-	sf::Texture RRTexture; // AA Texture
-	sf::Sprite RRSprite; // AA sprite
+	sf::Texture RRTexture; // RR Texture
+	sf::Sprite RRSprite; // RR sprite
 
 	int RRspeed; // how fast is he travelling
 	int RRdirection; // what direction is he facing
 	int RRstrength; // strength of enemy
-	bool RRalive; // is AA alive boolean
+	bool RRalive; // is RR alive boolean
 
 public:
 
@@ -22,7 +22,6 @@ public:
 	sf::Sprite getRRbody(); // sprite body
 	void setPositionRR(); // set position for the enemy AA
 	void setPositionRR(int xPos, int yPos); // set position for the enemy AA
-	void moveRR(); // allows movement
-	void checkBoundry(sf::Vector2f t_pos);
+	void checkBoundry(sf::Vector2f t_pos); // boundry checking
 	void setDirectionRR(); // Random Direction
 };

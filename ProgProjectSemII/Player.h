@@ -10,6 +10,9 @@ class Player
 	// private data members
 	sf::Sprite m_playerSprite;
 	sf::Texture m_playerTexture;
+	sf::Texture m_playerLeftTexture;
+	sf::Texture m_playerRightTexture;
+	sf::Texture m_playerUpTexture;
 
 	int speed; // speed of the player character
 	int image_width; //width of character sprite
