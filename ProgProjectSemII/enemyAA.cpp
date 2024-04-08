@@ -8,7 +8,7 @@ enemyAA::enemyAA()
 
 	setPositionAA();
 	strength = 2;
-	speed = 3;
+	speed = 5;
 	enemyAlive = true;
 	image_width = 64;
 	direction = (rand() % 2) + 1;;
@@ -42,9 +42,7 @@ void enemyAA::moveAA()
 {
 		sf::Vector2f pos(m_AAEnemySprite.getPosition());
 
-		if (direction == EAST)
-
-		for (int index = 0; index < MAXAA; index++) 
+		if (direction == EAST) 
 		{
 			pos.x = pos.x + speed;
 		}
@@ -52,6 +50,7 @@ void enemyAA::moveAA()
 		{
 			pos.x = pos.x - speed;
 		}
+
 		if (direction == NORTH)
 		{
 			pos.y = pos.y + speed;
@@ -60,6 +59,7 @@ void enemyAA::moveAA()
 		{
 			pos.y = pos.y - speed;
 		}
+
 		m_AAEnemySprite.setPosition(pos);
 }
 

@@ -12,6 +12,7 @@ class enemyRR
 	int RRspeed; // how fast is he travelling
 	int RRdirection; // what direction is he facing
 	int RRstrength; // strength of enemy
+	int image_width;
 	bool RRalive; // is AA alive boolean
 
 public:

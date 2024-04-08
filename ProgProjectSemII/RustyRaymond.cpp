@@ -1,4 +1,5 @@
 #include"RustyRaymond.h"
+#include"Game.h"
 
 enemyRR::enemyRR()
 {
@@ -8,6 +9,8 @@ enemyRR::enemyRR()
 	RRstrength = 4;
 	RRspeed = 4;
 	RRalive = true;
+	image_width = 64;
+	RRdirection == EAST;
 }
 
 void enemyRR::loadEnemy()
