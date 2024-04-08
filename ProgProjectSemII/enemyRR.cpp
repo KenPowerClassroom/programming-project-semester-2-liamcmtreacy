@@ -1,4 +1,4 @@
-#include"RustyRaymond.h"
+#include"enemyRR.h"
 #include"Game.h"
 
 enemyRR::enemyRR()
@@ -10,7 +10,7 @@ enemyRR::enemyRR()
 	RRspeed = 4;
 	RRalive = true;
 	image_width = 64;
-	RRdirection == EAST;
+	RRdirection = EAST;
 }
 
 void enemyRR::loadEnemy()
@@ -40,6 +40,7 @@ void enemyRR::setPositionRR(int xPos, int yPos)
 
 void enemyRR::moveRR()
 {
+	sf::Vector2f position(RRSprite.getPosition());
 }
 
 void enemyRR::checkBoundry(sf::Vector2f t_pos)

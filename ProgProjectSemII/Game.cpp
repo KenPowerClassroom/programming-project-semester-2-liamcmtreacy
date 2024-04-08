@@ -34,7 +34,7 @@
 #include "Game.h"   // include Game header file
 #include "enemyAA.h" // enemyAA header
 #include "Player.h"
-#include "RustyRaymond.h" //RR header
+#include "enemyRR.h" //RR header
 
 
 int main()
@@ -158,8 +158,6 @@ void Game::update()
 	arrayAA[0].checkBoundry(arrayAA[0].getEnemyBody().getPosition());
 	arrayAA[1].checkBoundry(arrayAA[1].getEnemyBody().getPosition());
 	arrayAA[2].checkBoundry(arrayAA[2].getEnemyBody().getPosition());
-
-	RRenemy.moveRR();
 }
 
 void Game::draw()

@@ -27,7 +27,7 @@
     <ClCompile Include="bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RustyRaymond.cpp">
+    <ClCompile Include="enemyRR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClInclude Include="bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RustyRaymond.h">
+    <ClInclude Include="enemyRR.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -127,7 +127,7 @@
     <ClCompile Include="enemyAA.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="RustyRaymond.cpp" />
+    <ClCompile Include="enemyRR.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -135,7 +135,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="RustyRaymond.h" />
+    <ClInclude Include="enemyRR.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
