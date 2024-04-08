@@ -52,6 +52,14 @@ void enemyAA::moveAA()
 		{
 			pos.x = pos.x - speed;
 		}
+		if (direction == NORTH)
+		{
+			pos.y = pos.y + speed;
+		}
+		if (direction == SOUTH)
+		{
+			pos.y = pos.y - speed;
+		}
 		m_AAEnemySprite.setPosition(pos);
 }
 

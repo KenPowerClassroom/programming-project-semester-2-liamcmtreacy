@@ -80,6 +80,7 @@ void Game::loadContent()
 	m_enemiesKilled.setPosition(10, 100);  // its position on the screen
 
 	setUpAA();
+	setUpRR();
 	loadBackground();
 }
 
@@ -176,7 +177,6 @@ void Game::draw()
 	window.draw(m_enemiesKilled);
 	window.draw(m_message);  // write message to the screen
 	window.draw(myPlayer.getBody()); // draw the player character
-	window.draw(AAenemy.getEnemyBody());
 	window.draw(RRenemy.getRRbody());
 
 	for (int plus = 0; plus < MAXAA; plus++)
