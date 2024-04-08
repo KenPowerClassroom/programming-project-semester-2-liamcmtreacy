@@ -12,7 +12,6 @@ class enemyAA
 	int speed; // how fast is he travelling
 	int direction; // what direction is he facing
 	int strength; // strength of enemy
-	int image_width;
 	bool enemyAlive; // is AA alive boolean
 
 public:

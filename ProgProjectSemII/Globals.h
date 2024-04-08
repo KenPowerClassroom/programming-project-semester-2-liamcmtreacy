@@ -7,6 +7,7 @@ const int static EAST = 2; // east
 const int static NORTH = 3; // direction north
 const int static SOUTH = 4; // south
 const int MAXAA = 3;
+const int MAXRR = 2;
 
 const int PLAYER_WIDTH = 64;
 const int ENEMY_WIDTH = 64;

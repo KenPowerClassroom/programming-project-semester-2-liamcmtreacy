@@ -176,8 +176,11 @@ void Game::draw()
 	window.draw(m_enemiesKilled);
 	window.draw(m_message);  // write message to the screen
 	window.draw(myPlayer.getBody()); // draw the player character
-	window.draw(RRenemy.getRRbody());
 
+	for (int add = 0; add < MAXRR; add++)
+	{
+		window.draw(arrayRR[add].getRRbody());
+	}
 	for (int plus = 0; plus < MAXAA; plus++)
 	{
 		window.draw(arrayAA[plus].getEnemyBody());
@@ -208,5 +211,9 @@ void Game::setUpAA() // set up positions
 
 void Game::setUpRR()
 {
-	RRenemy.setPositionRR(550, 500);
+	for (int index = 0; index < MAXRR; index++)
+	{
+		arrayRR[0].setPositionRR(550, 500);
+		arrayRR[1].setPositionRR(650, 330);
+	}
 }

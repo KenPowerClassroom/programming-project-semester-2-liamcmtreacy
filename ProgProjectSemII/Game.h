@@ -22,6 +22,7 @@ class Game
 	enemyAA AAenemy;
 	enemyAA arrayAA[3];
 	enemyRR RRenemy;
+	enemyRR arrayRR[2];
 
 	sf::RenderWindow window;
 

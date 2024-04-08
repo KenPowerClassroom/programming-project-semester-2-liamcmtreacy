@@ -1,4 +1,5 @@
 #include "enemyAA.h"
+#include "Globals.h"
 #include "Game.h"
 
 enemyAA::enemyAA()
@@ -10,7 +11,6 @@ enemyAA::enemyAA()
 	strength = 2;
 	speed = 5;
 	enemyAlive = true;
-	image_width = 64;
 	direction = (rand() % 4) + 1;;
 }
 
@@ -68,7 +68,7 @@ void enemyAA::checkBoundry(sf::Vector2f t_pos)
 		{
 			direction++;
 		}
-		if (t_pos.x > SCREEN_WIDTH - image_width)
+		if (t_pos.x > SCREEN_WIDTH - ENEMY_WIDTH)
 		{
 			direction--;
 		}
@@ -76,7 +76,7 @@ void enemyAA::checkBoundry(sf::Vector2f t_pos)
 		{
 			direction--;
 		}
-		if (t_pos.y > SCREEN_HEIGHT - image_width)
+		if (t_pos.y > SCREEN_HEIGHT - ENEMY_WIDTH)
 		{
 			direction++;
 		}
