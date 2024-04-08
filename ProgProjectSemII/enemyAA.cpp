@@ -11,7 +11,7 @@ enemyAA::enemyAA()
 	speed = 5;
 	enemyAlive = true;
 	image_width = 64;
-	direction = (rand() % 2) + 1;;
+	direction = (rand() % 4) + 1;;
 }
 
 void enemyAA::loadEnemy()
@@ -50,7 +50,6 @@ void enemyAA::moveAA()
 		{
 			pos.x = pos.x - speed;
 		}
-
 		if (direction == NORTH)
 		{
 			pos.y = pos.y + speed;
@@ -73,10 +72,18 @@ void enemyAA::checkBoundry(sf::Vector2f t_pos)
 		{
 			direction--;
 		}
+		if (t_pos.y < 0.0f)
+		{
+			direction--;
+		}
+		if (t_pos.y > SCREEN_HEIGHT - image_width)
+		{
+			direction++;
+		}
 
 }
 
 void enemyAA::setDirectionAA()
 {
-	direction = (rand() % 2) + 1;
+	direction = (rand() % 4) + 1;
 }
