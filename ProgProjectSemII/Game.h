@@ -19,9 +19,7 @@ class Game
 	// array of enemy objects etc.
 
 	Player myPlayer;
-	enemyAA AAenemy;
 	enemyAA arrayAA[3];
-	enemyRR RRenemy;
 	enemyRR arrayRR[2];
 
 	sf::RenderWindow window;
