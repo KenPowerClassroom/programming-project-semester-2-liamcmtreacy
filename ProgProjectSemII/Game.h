@@ -25,6 +25,8 @@ class Game
 	sf::RenderWindow window;
 
 public:
+
+
 	sf::Font m_font;  // font for writing text
 	sf::Text m_message;  // text to write on the screen
 
@@ -34,6 +36,7 @@ public:
 
 	sf::Sprite BGSprite;
 	sf::Texture BGTexture;
+	sf::RectangleShape m_healthBar;
 
 public:	  // declaration of member functions	
 	Game(); // default constructor
@@ -44,4 +47,5 @@ public:	  // declaration of member functions
 	void loadBackground();
 	void setUpAA();
 	void setUpRR();
+	void setUpHealthBar();
 };

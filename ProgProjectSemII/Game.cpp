@@ -70,6 +70,10 @@ void Game::loadContent()
 	m_score.setFillColor(sf::Color::White); // color
 	m_score.setPosition(10, 40);  // score total and its position on the screen
 
+	m_healthBar.setFillColor(sf::Color::White);
+	m_healthBar.setSize(sf::Vector2f{100.f, 100.0f });
+	m_healthBar.setPosition(1400.0f, 0.0f);
+
 	m_lives.setFont(m_font);  // text font
 	m_lives.setCharacterSize(24); //text size
 	m_lives.setFillColor(sf::Color::White); // setting the color white for the text
@@ -175,6 +179,7 @@ void Game::draw()
 	window.draw(m_lives);
 	window.draw(m_enemiesKilled);
 	window.draw(m_message);  // write message to the screen
+	window.draw(m_healthBar);// health bar for player
 	window.draw(myPlayer.getBody()); // draw the player character
 
 	for (int add = 0; add < MAXRR; add++)
@@ -201,17 +206,13 @@ void Game::loadBackground()
 
 void Game::setUpAA() // set up positions
 {
-
 		arrayAA[0].setPositionAA(300, 300);
 		arrayAA[1].setPositionAA(480, 100);
-		arrayAA[2].setPositionAA(1400, 250);
-	
+		arrayAA[2].setPositionAA(1400, 250);	
 }
 
 void Game::setUpRR()
 {
-
 		arrayRR[0].setPositionRR(550, 500);
-		arrayRR[1].setPositionRR(650, 330);
-	
+		arrayRR[1].setPositionRR(650, 330);	
 }
