@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include "Game.h"
 
+
 enemyAA::enemyAA()
 {
 	// basic info
@@ -11,12 +12,27 @@ enemyAA::enemyAA()
 	strength = 2;
 	speed = 5;
 	enemyAlive = true;
-	direction = (rand() % 4) + 1;;
+	direction = (rand()% 4) + 1;
 }
 
 void enemyAA::loadEnemy()
 {
 	if (!m_AAEnemyTexture.loadFromFile("ASSETS\\SPRITES\\enemy1_down.png"))
+	{
+		std::cout << "error loading your first enemy " << std::endl;
+	}
+
+	if (!m_AAEnemyUp.loadFromFile("ASSETS\\SPRITES\\enemy1_up.png"))
+	{
+		std::cout << "error loading your first enemy " << std::endl;
+	}
+
+	if (!m_AAEnemyRight.loadFromFile("ASSETS\\SPRITES\\enemy1_right.png"))
+	{
+		std::cout << "error loading your first enemy " << std::endl;
+	}
+
+	if (!m_AAEnemyLeft.loadFromFile("ASSETS\\SPRITES\\enemy1_left.png"))
 	{
 		std::cout << "error loading your first enemy " << std::endl;
 	}
@@ -45,18 +61,22 @@ void enemyAA::moveAA()
 		if (direction == EAST) 
 		{
 			pos.x = pos.x + speed;
+			m_AAEnemySprite.setTexture(m_AAEnemyLeft);
 		}
 		if (direction == WEST)
 		{
 			pos.x = pos.x - speed;
+			m_AAEnemySprite.setTexture(m_AAEnemyRight);
 		}
 		if (direction == NORTH)
 		{
 			pos.y = pos.y + speed;
+			m_AAEnemySprite.setTexture(m_AAEnemyUp);
 		}
 		if (direction == SOUTH)
 		{
 			pos.y = pos.y - speed;
+			m_AAEnemySprite.setTexture(m_AAEnemyTexture);
 		}
 
 		m_AAEnemySprite.setPosition(pos);
@@ -64,6 +84,7 @@ void enemyAA::moveAA()
 
 void enemyAA::checkBoundry(sf::Vector2f t_pos)
 {
+	sf::Vector2f pos(m_AAEnemySprite.getPosition());
 		if (t_pos.x < 0.0f)
 		{
 			direction++;

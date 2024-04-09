@@ -1,4 +1,6 @@
 #pragma once
+#include "ctime"
+#include "cstdlib"
 #include "SFML/Graphics.hpp"
 #include "Globals.h"
 #include <iostream>
@@ -6,6 +8,9 @@
 class enemyAA
 {
 	sf::Texture m_AAEnemyTexture; // AA Texture
+	sf::Texture m_AAEnemyLeft; // left texture
+	sf::Texture m_AAEnemyRight; // right texture
+	sf::Texture m_AAEnemyUp; // up texture
 	sf::Sprite m_AAEnemySprite; // AA sprite
 
 	int health; // how much health does he have

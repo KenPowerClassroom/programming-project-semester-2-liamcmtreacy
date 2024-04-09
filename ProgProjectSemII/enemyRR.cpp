@@ -38,6 +38,10 @@ void enemyRR::setPositionRR(int xPos, int yPos)
 	RRSprite.setPosition(xPos, yPos);
 }
 
+void enemyRR::moveRR()
+{
+}
+
 void enemyRR::checkBoundry(sf::Vector2f t_pos)
 {
 }

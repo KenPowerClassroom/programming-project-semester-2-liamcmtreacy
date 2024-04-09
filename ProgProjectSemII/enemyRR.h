@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include "SFML/Graphics.hpp"
 #include "Globals.h"
 #include <iostream>
@@ -17,11 +16,12 @@ class enemyRR
 public:
 
 	enemyRR();
-	void loadEnemy(); // load AA onto the screen
+	void loadEnemy(); // load RR onto the screen
 
 	sf::Sprite getRRbody(); // sprite body
-	void setPositionRR(); // set position for the enemy AA
-	void setPositionRR(int xPos, int yPos); // set position for the enemy AA
+	void setPositionRR(); // set position for the enemy RR
+	void setPositionRR(int xPos, int yPos); // set position for the enemy RR
+	void moveRR(); // follow the player
 	void checkBoundry(sf::Vector2f t_pos); // boundry checking
 	void setDirectionRR(); // Random Direction
 };
