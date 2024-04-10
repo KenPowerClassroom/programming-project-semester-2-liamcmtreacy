@@ -8,7 +8,6 @@ enemyRR::enemyRR()
 	setPositionRR();
 
 	RRstrength = 4;
-	RRspeed = 4;
 	RRalive = true;
 	RRdirection = EAST;
 }
@@ -38,8 +37,19 @@ void enemyRR::setPositionRR(int xPos, int yPos)
 	RRSprite.setPosition(xPos, yPos);
 }
 
-void enemyRR::moveRR()
+void enemyRR::moveRR(const sf::Vector2f& playerPosition)
 {
+	sf::Vector2f RRPos = RRSprite.getPosition();
+
+	sf::Vector2f direction = playerPosition - RRPos;
+
+	float distance = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+	direction /= distance;
+
+	float speedOfFollower = 2;
+	RRSprite.move(direction * speedOfFollower);
+	//typed myself, but helped by Shane Moran
+
 }
 
 void enemyRR::checkBoundry(sf::Vector2f t_pos)

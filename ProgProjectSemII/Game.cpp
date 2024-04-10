@@ -70,8 +70,8 @@ void Game::loadContent()
 	m_score.setFillColor(sf::Color::White); // color
 	m_score.setPosition(10, 40);  // score total and its position on the screen
 
-	m_healthBar.setFillColor(sf::Color::White);
-	m_healthBar.setSize(sf::Vector2f{100.f, 100.0f });
+	m_healthBar.setFillColor(sf::Color::Red);
+	m_healthBar.setSize(sf::Vector2f{100.0f, 50.0f });
 	m_healthBar.setPosition(1400.0f, 0.0f);
 
 	m_lives.setFont(m_font);  // text font
@@ -162,6 +162,8 @@ void Game::update()
 	arrayAA[0].checkBoundry(arrayAA[0].getEnemyBody().getPosition());
 	arrayAA[1].checkBoundry(arrayAA[1].getEnemyBody().getPosition());
 	arrayAA[2].checkBoundry(arrayAA[2].getEnemyBody().getPosition());
+
+	followerEnemyRR.moveRR(myPlayer.getBody().getPosition());
 }
 
 void Game::draw()
@@ -181,11 +183,7 @@ void Game::draw()
 	window.draw(m_message);  // write message to the screen
 	window.draw(m_healthBar);// health bar for player
 	window.draw(myPlayer.getBody()); // draw the player character
-
-	for (int add = 0; add < MAXRR; add++)
-	{
-		window.draw(arrayRR[add].getRRbody());
-	}
+	window.draw(followerEnemyRR.getRRbody());
 	for (int plus = 0; plus < MAXAA; plus++)
 	{
 		window.draw(arrayAA[plus].getEnemyBody());
@@ -213,6 +211,5 @@ void Game::setUpAA() // set up positions
 
 void Game::setUpRR()
 {
-		arrayRR[0].setPositionRR(550, 500);
-		arrayRR[1].setPositionRR(650, 330);	
+		followerEnemyRR.setPositionRR(550, 500);
 }

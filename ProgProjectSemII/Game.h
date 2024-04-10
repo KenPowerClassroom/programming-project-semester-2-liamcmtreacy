@@ -20,7 +20,8 @@ class Game
 
 	Player myPlayer;
 	enemyAA arrayAA[3];
-	enemyRR arrayRR[2];
+	/*enemyRR arrayRR[2];*/
+	enemyRR followerEnemyRR;
 
 	sf::RenderWindow window;
 
@@ -47,5 +48,4 @@ public:	  // declaration of member functions
 	void loadBackground();
 	void setUpAA();
 	void setUpRR();
-	void setUpHealthBar();
 };

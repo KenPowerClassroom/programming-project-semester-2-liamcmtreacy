@@ -21,7 +21,7 @@ public:
 	sf::Sprite getRRbody(); // sprite body
 	void setPositionRR(); // set position for the enemy RR
 	void setPositionRR(int xPos, int yPos); // set position for the enemy RR
-	void moveRR(); // follow the player
-	void checkBoundry(sf::Vector2f t_pos); // boundry checking
+	void moveRR(const sf::Vector2f& playerPosition); // follow the player
+	void checkBoundry(sf::Vector2f t_pos); //boundrychecking
 	void setDirectionRR(); // Random Direction
 };
