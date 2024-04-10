@@ -20,8 +20,7 @@ class Game
 
 	Player myPlayer;
 	enemyAA arrayAA[3];
-	/*enemyRR arrayRR[2];*/
-	enemyRR followerEnemyRR;
+	enemyRR arrayRR[2]; // FOLLOWER ENEMY. NAMED RUSTY RAYMOND
 
 	sf::RenderWindow window;
 

@@ -5,7 +5,7 @@
 #include "Globals.h"
 #include <iostream>
 
-class enemyAA
+class enemyAA // Aliminium Alphonso "AA" is a fast enemy who spawns more than RR, he moves in a random direction
 {
 	sf::Texture m_AAEnemyTexture; // AA Texture
 	sf::Texture m_AAEnemyLeft; // left texture

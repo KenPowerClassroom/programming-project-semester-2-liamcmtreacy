@@ -3,7 +3,7 @@
 #include "Globals.h"
 #include <iostream>
 
-class enemyRR
+class enemyRR // Rusty Raymond "RR" is a follower enemy, he is slower but follows the player
 {
 	sf::Texture RRTexture; // RR Texture
 	sf::Sprite RRSprite; // RR sprite
@@ -22,6 +22,5 @@ public:
 	void setPositionRR(); // set position for the enemy RR
 	void setPositionRR(int xPos, int yPos); // set position for the enemy RR
 	void moveRR(const sf::Vector2f& playerPosition); // follow the player
-	void checkBoundry(sf::Vector2f t_pos); //boundrychecking
-	void setDirectionRR(); // Random Direction
+	void checkBoundryRR(sf::Vector2f t_pos); //boundrychecking
 };

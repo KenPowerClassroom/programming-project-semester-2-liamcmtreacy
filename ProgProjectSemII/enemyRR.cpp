@@ -52,12 +52,26 @@ void enemyRR::moveRR(const sf::Vector2f& playerPosition)
 
 }
 
-void enemyRR::checkBoundry(sf::Vector2f t_pos)
+void enemyRR::checkBoundryRR(sf::Vector2f t_pos)
 {
-}
+	sf::Vector2f RRpos(RRSprite.getPosition());
 
-void enemyRR::setDirectionRR()
-{
+	if (t_pos.x < 0.0f)
+	{
+		RRdirection++;
+	}
+	if (t_pos.x > SCREEN_WIDTH - ENEMY_WIDTH)
+	{
+		RRdirection--;
+	}
+	if (t_pos.y < 0.0f)
+	{
+		RRdirection--;
+	}
+	if (t_pos.y > SCREEN_HEIGHT - ENEMY_WIDTH)
+	{
+		RRdirection++;
+	}
 }
 
 

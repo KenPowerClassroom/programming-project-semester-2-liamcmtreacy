@@ -163,7 +163,11 @@ void Game::update()
 	arrayAA[1].checkBoundry(arrayAA[1].getEnemyBody().getPosition());
 	arrayAA[2].checkBoundry(arrayAA[2].getEnemyBody().getPosition());
 
-	followerEnemyRR.moveRR(myPlayer.getBody().getPosition());
+	arrayRR[0].moveRR(myPlayer.getBody().getPosition());
+	arrayRR[1].moveRR(myPlayer.getBody().getPosition());
+
+	arrayRR[0].checkBoundryRR(arrayRR[0].getRRbody().getPosition());
+	arrayRR[1].checkBoundryRR(arrayRR[1].getRRbody().getPosition());
 }
 
 void Game::draw()
@@ -183,7 +187,11 @@ void Game::draw()
 	window.draw(m_message);  // write message to the screen
 	window.draw(m_healthBar);// health bar for player
 	window.draw(myPlayer.getBody()); // draw the player character
-	window.draw(followerEnemyRR.getRRbody());
+
+	for (int count = 0; count < MAXRR; count++)
+	{
+		window.draw(arrayRR[count].getRRbody());
+	}
 	for (int plus = 0; plus < MAXAA; plus++)
 	{
 		window.draw(arrayAA[plus].getEnemyBody());
@@ -211,5 +219,6 @@ void Game::setUpAA() // set up positions
 
 void Game::setUpRR()
 {
-		followerEnemyRR.setPositionRR(550, 500);
+		arrayRR[0].setPositionRR(400, 400);
+		arrayRR[1].setPositionRR(600, 150);
 }
