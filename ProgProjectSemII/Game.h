@@ -10,6 +10,7 @@
 #include "Player.h"   // include Player header file
 #include "enemyAA.h"
 #include "enemyRR.h"
+#include "bullet.h"
 
 class Game
 {
@@ -22,6 +23,7 @@ class Game
 	enemyAA arrayAA[3];
 	enemyRR arrayRR[2]; // FOLLOWER ENEMY. NAMED RUSTY RAYMOND
 
+	Bullet playerBullet;
 	sf::RenderWindow window;
 
 public:
@@ -47,4 +49,6 @@ public:	  // declaration of member functions
 	void loadBackground();
 	void setUpAA();
 	void setUpRR();
+
+	bool isBulletActive{ false };
 };

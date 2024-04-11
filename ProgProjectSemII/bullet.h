@@ -2,6 +2,7 @@
 //bullet class
 #include "SFML/Graphics.hpp"
 #include <iostream>
+#include "Globals.h"
 class Bullet {
 
 	sf::Sprite m_fireballSprite;
@@ -13,16 +14,18 @@ class Bullet {
 	int speed;
 	int bulletDirection;
 	int bulletStrength;
-	bool didPlayerShoot{ false };
 
 public:
 
 	Bullet();
+	sf::Sprite getBulletBody();
+	void setPositionBullet(sf::Vector2f playerPosition);
 	void loadBullet();
 	void shootBulletLeft();
 	void shootBulletUp();
 	void shootBulletdown();
 	void shootBulletRight();
 	void setPositionBullet();
+	bool bulletMove();
 	void speedBulletUp();
 };

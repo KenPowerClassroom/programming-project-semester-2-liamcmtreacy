@@ -14,6 +14,7 @@ class Player
 	sf::Texture m_playerRightTexture;
 	sf::Texture m_playerUpTexture;
 
+
 	int speed; // speed of the player character
 	int image_width; //width of character sprite
 	int livesCount; // amount of lives
@@ -32,5 +33,4 @@ public:
 	void moveUp();
 	void moveDown();
 	void boundry(sf::Vector2f t_pos);
-	void shoot();
 };

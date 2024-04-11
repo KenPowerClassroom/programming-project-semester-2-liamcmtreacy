@@ -1,4 +1,3 @@
-
 #include "Player.h"   // include Player header file
 
 // Player function definitions here
@@ -129,9 +128,5 @@ void Player::boundry(sf::Vector2f t_pos)
 	{
 		direction--;
 	}
-}
-
-void Player::shoot()
-{
 }
 

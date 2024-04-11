@@ -33,7 +33,8 @@
 
 #include "Game.h"   // include Game header file
 #include "enemyAA.h" // enemyAA header
-#include "Player.h"
+#include "Player.h" // player header
+#include "bullet.h" // bullet header
 #include "enemyRR.h" //RR header
 
 
@@ -154,18 +155,29 @@ void Game::update()
 	{
 		myPlayer.moveDown(); // calling move down function
 	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		isBulletActive = true;
+		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+		playerBullet.shootBulletUp();
+	}
+
 	// update any game variables here 
+	//bullet move 
+	playerBullet.bulletMove();
+	//AA move
 	arrayAA[0].moveAA();
 	arrayAA[1].moveAA();
 	arrayAA[2].moveAA();
-
+	//AA boundry checking
 	arrayAA[0].checkBoundry(arrayAA[0].getEnemyBody().getPosition());
 	arrayAA[1].checkBoundry(arrayAA[1].getEnemyBody().getPosition());
 	arrayAA[2].checkBoundry(arrayAA[2].getEnemyBody().getPosition());
-
+	//RR movement
 	arrayRR[0].moveRR(myPlayer.getBody().getPosition());
 	arrayRR[1].moveRR(myPlayer.getBody().getPosition());
-
+	//RR check boundry
 	arrayRR[0].checkBoundryRR(arrayRR[0].getRRbody().getPosition());
 	arrayRR[1].checkBoundryRR(arrayRR[1].getRRbody().getPosition());
 }
@@ -187,6 +199,7 @@ void Game::draw()
 	window.draw(m_message);  // write message to the screen
 	window.draw(m_healthBar);// health bar for player
 	window.draw(myPlayer.getBody()); // draw the player character
+	window.draw(playerBullet.getBulletBody());
 
 	for (int count = 0; count < MAXRR; count++)
 	{
@@ -201,7 +214,7 @@ void Game::draw()
 
 void Game::loadBackground()
 {
-	(!BGTexture.loadFromFile("ASSETS\\SPRITES\\floor.png"));
+	if (!BGTexture.loadFromFile("ASSETS\\SPRITES\\floor.png"))
 	{
 		std::cout << "error loading the background image" << std::endl; // error message if background fails
 	}
