@@ -84,6 +84,7 @@ void Game::loadContent()
 	m_enemiesKilled.setCharacterSize(24); // set the text size
 	m_enemiesKilled.setFillColor(sf::Color::White); // set the text colour
 	m_enemiesKilled.setPosition(10, 100);  // its position on the screen
+	//int to string
 
 	setUpAA();
 	setUpRR();
@@ -140,23 +141,27 @@ void Game::update()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		myPlayer.moveLeft(); // calling move left function
+		directionFacing = EAST;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		myPlayer.moveRight(); // calling moveRight function
+		directionFacing = WEST;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		myPlayer.moveUp(); // calling move up function
+		directionFacing = NORTH;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		myPlayer.moveDown(); // calling move down function
+		directionFacing = SOUTH;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		isBulletActive = true;
 		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
@@ -189,6 +194,8 @@ void Game::update()
 		if (playerBullet.boundingBox().intersects(arrayAA[counter].AAboundingBox()))
 		{
 			arrayAA[counter].setPositionAA();
+			enemiesKilled = enemiesKilled + 1;
+			gameScore = gameScore + 100;
 		}
 	}
 	//ENEMY AND BULLET COLLISION FOR RR
@@ -197,6 +204,8 @@ void Game::update()
 		if (playerBullet.boundingBox().intersects(arrayRR[index].getBoundingBoxRR()))
 		{
 			arrayRR[index].setPositionRR();
+			enemiesKilled = enemiesKilled+ 1;
+			gameScore = gameScore + 200;
 		}
 	}
 	//PLAYER COLLISION DETECTION
@@ -210,9 +219,9 @@ void Game::draw()
 	window.clear();
 
 	m_message.setString("Game Play");
-	m_score.setString("Score: ");
-	m_lives.setString("Lives: ");
-	m_enemiesKilled.setString("Enemies Killed: ");
+	m_score.setString("Score: " + std::to_string(gameScore));
+	m_lives.setString("Lives: " );
+	m_enemiesKilled.setString("Enemies Killed: " + std::to_string(enemiesKilled));
 	window.draw(BGSprite); // draw the Sprite for background
 	window.draw(m_score); // write score to the screen
 	window.draw(m_lives);

@@ -114,19 +114,19 @@ void Player::boundry(sf::Vector2f t_pos)
 	// boundry checking
 	if (t_pos.x <= 0.0f)
 	{
-		direction++;
+		PlayerDirection++;
 	}
 	if (t_pos.x > SCREEN_WIDTH - image_width)
 	{
-		direction--;
+		PlayerDirection--;
 	}
 	if (t_pos.y <= 0.0f)
 	{
-		direction++;
+		PlayerDirection++;
 	}
 	if (t_pos.y > SCREEN_HEIGHT - image_width)
 	{
-		direction--;
+		PlayerDirection--;
 	}
 }
 

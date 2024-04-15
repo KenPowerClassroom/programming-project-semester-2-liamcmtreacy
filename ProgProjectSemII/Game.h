@@ -20,7 +20,7 @@ class Game
 	// array of enemy objects etc.
 
 	Player myPlayer;
-	enemyAA arrayAA[3];
+	enemyAA arrayAA[3]; // standard enemy, named AA
 	enemyRR arrayRR[2]; // FOLLOWER ENEMY. NAMED RUSTY RAYMOND
 
 	Bullet playerBullet;
@@ -40,6 +40,9 @@ public:
 	sf::Sprite BGSprite;
 	sf::Texture BGTexture;
 	sf::RectangleShape m_healthBar;
+
+	int enemiesKilled = 0;
+	int gameScore = 0;
 
 public:	  // declaration of member functions	
 	Game(); // default constructor

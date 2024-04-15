@@ -13,7 +13,6 @@ class Bullet {
 
 	int speed;
 	int bulletDirection;
-	int bulletStrength;
 
 public:
 

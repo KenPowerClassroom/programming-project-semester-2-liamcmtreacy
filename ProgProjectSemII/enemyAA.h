@@ -32,5 +32,4 @@ public:
 	void checkBoundry(sf::Vector2f t_pos);
 	void setDirectionAA(); // Random Direction
 	sf::FloatRect AAboundingBox();
-	void resetSpawn();
 };

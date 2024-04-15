@@ -72,14 +72,10 @@ sf::FloatRect Bullet::boundingBox()
 
 bool Bullet::bulletMove()
 {
-	if (bulletDirection == NORTH);
+	if (bulletDirection == NORTH)
 	{
 		m_fireballSprite.move(0, -10);
 		return true;
-		if (m_fireballSprite.getPosition().y > SCREEN_HEIGHT)
-		{
-			return false;
-		}
 	}
 
 	if (bulletDirection == SOUTH)
@@ -102,6 +98,12 @@ bool Bullet::bulletMove()
 	{
 		return false;
 	}
+
+	if (m_fireballSprite.getPosition().x < 0.0f);
+	{
+		return false;
+	}
+
 	return true;
 }
 

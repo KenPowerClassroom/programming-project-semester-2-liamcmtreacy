@@ -19,7 +19,7 @@ class Player
 	int image_width; //width of character sprite
 	int livesCount; // amount of lives
 	int health; // health of our player
-	int direction; // what direction is player going
+	int PlayerDirection; // what direction is player going
 
 public:
 
