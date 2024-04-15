@@ -43,25 +43,29 @@ void Bullet::loadBullet()
 
 void Bullet::shootBulletLeft()
 {
-	bulletDirection = EAST;
+	isBulletActive = true;
+	bulletDirection = WEST;
 	m_fireballSprite.setTexture(m_fireballLeftTexture);
 }
 
 void Bullet::shootBulletUp()
 {
+	isBulletActive = true;
 	bulletDirection = NORTH;
 	m_fireballSprite.setTexture(m_fireballUpTexture);
 }
 
 void Bullet::shootBulletdown()
 {
+	isBulletActive = true;
 	bulletDirection = SOUTH;
 	m_fireballSprite.setTexture(m_fireballDownTexture);
 }
 
 void Bullet::shootBulletRight()
 {
-	bulletDirection = WEST;
+	isBulletActive = true;
+	bulletDirection = EAST;
 	m_fireballSprite.setTexture(m_fireballRightTexture);
 }
 
@@ -85,12 +89,12 @@ bool Bullet::bulletMove()
 	}
 	if (bulletDirection == WEST)
 	{
-		m_fireballSprite.move(6, 0);
+		m_fireballSprite.move(-6, 0);
 		return true;
 	}
 	if (bulletDirection == EAST)
 	{
-		m_fireballSprite.move(0, 6);
+		m_fireballSprite.move(6, 0);
 		return true;
 	}
 

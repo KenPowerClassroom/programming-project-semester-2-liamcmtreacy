@@ -79,4 +79,8 @@ sf::FloatRect enemyRR::getBoundingBoxRR()
 	return RRSprite.getGlobalBounds();
 }
 
+void enemyRR::respawn()
+{
+}
+
 

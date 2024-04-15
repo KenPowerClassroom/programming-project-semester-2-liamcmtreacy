@@ -13,6 +13,7 @@ class Bullet {
 
 	int speed;
 	int bulletDirection;
+	bool isBulletActive{ false };
 
 public:
 

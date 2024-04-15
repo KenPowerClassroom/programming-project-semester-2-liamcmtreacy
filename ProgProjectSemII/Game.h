@@ -28,8 +28,6 @@ class Game
 
 public:
 
-	int directionFacing;
-
 	sf::Font m_font;  // font for writing text
 	sf::Text m_message;  // text to write on the screen
 
@@ -55,5 +53,5 @@ public:	  // declaration of member functions
 	void setUpRR(); // set position of RR enemy
 	void collisionDetection(); 
 
-	bool isBulletActive{ false };
+	
 };

@@ -141,35 +141,46 @@ void Game::update()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		myPlayer.moveLeft(); // calling move left function
-		directionFacing = EAST;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		myPlayer.moveRight(); // calling moveRight function
-		directionFacing = WEST;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		myPlayer.moveUp(); // calling move up function
-		directionFacing = NORTH;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		myPlayer.moveDown(); // calling move down function
-		directionFacing = SOUTH;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		isBulletActive = true;
 		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 		playerBullet.shootBulletUp();
-		playerBullet.shootBulletdown();
-		playerBullet.shootBulletRight();
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 		playerBullet.shootBulletLeft();
 	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+		playerBullet.shootBulletdown();
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+		playerBullet.shootBulletRight();
+	}
+
 
 	// update any game variables here 
 	//bullet move
@@ -196,6 +207,7 @@ void Game::update()
 			arrayAA[counter].setPositionAA();
 			enemiesKilled = enemiesKilled + 1;
 			gameScore = gameScore + 100;
+			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 		}
 	}
 	//ENEMY AND BULLET COLLISION FOR RR
@@ -206,6 +218,7 @@ void Game::update()
 			arrayRR[index].setPositionRR();
 			enemiesKilled = enemiesKilled+ 1;
 			gameScore = gameScore + 200;
+			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 		}
 	}
 	//PLAYER COLLISION DETECTION
@@ -218,7 +231,7 @@ void Game::draw()
 	// Clear the screen and draw your game sprites
 	window.clear();
 
-	m_message.setString("Game Play");
+	m_message.setString("Welcome to Liam's Game");
 	m_score.setString("Score: " + std::to_string(gameScore));
 	m_lives.setString("Lives: " );
 	m_enemiesKilled.setString("Enemies Killed: " + std::to_string(enemiesKilled));
@@ -260,7 +273,7 @@ void Game::setUpAA() // set up positions
 		arrayAA[2].setPositionAA(1400, 250);	
 }
 
-void Game::setUpRR()
+void Game::setUpRR() // set up RR Positions
 {
 		arrayRR[0].setPositionRR(400, 400);
 		arrayRR[1].setPositionRR(600, 150);
