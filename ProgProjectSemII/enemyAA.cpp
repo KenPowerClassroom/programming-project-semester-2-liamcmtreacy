@@ -54,6 +54,11 @@ void enemyAA::setPositionAA(int xPos, int yPos)
 	m_AAEnemySprite.setPosition(xPos, yPos);
 }
 
+sf::FloatRect enemyAA::boundBox()
+{
+	return m_AAEnemySprite.getGlobalBounds();
+}
+
 void enemyAA::moveAA()
 {
 		sf::Vector2f pos(m_AAEnemySprite.getPosition());
@@ -108,3 +113,11 @@ void enemyAA::setDirectionAA()
 {
 	direction = (rand() % 4) + 1;
 }
+
+sf::FloatRect enemyAA::AAboundingBox()
+{
+	return m_AAEnemySprite.getGlobalBounds();
+}
+
+
+

@@ -25,7 +25,7 @@ public:
 	void shootBulletUp();
 	void shootBulletdown();
 	void shootBulletRight();
-	void setPositionBullet();
+	sf::FloatRect boundingBox();
 	bool bulletMove();
 	void speedBulletUp();
 };

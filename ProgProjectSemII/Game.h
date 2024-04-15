@@ -28,6 +28,7 @@ class Game
 
 public:
 
+	int directionFacing;
 
 	sf::Font m_font;  // font for writing text
 	sf::Text m_message;  // text to write on the screen
@@ -44,11 +45,12 @@ public:	  // declaration of member functions
 	Game(); // default constructor
 	void	loadContent();
 	void	run();
-	void	update();
+	void	update(); // call everything in update
 	void	draw();
-	void loadBackground();
-	void setUpAA();
-	void setUpRR();
+	void loadBackground(); // loads background
+	void setUpAA(); // set position of AA enemy
+	void setUpRR(); // set position of RR enemy
+	void collisionDetection(); 
 
 	bool isBulletActive{ false };
 };

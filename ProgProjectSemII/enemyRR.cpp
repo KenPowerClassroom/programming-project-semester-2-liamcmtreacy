@@ -46,8 +46,8 @@ void enemyRR::moveRR(const sf::Vector2f& playerPosition)
 	float distance = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 	direction /= distance;
 
-	float speedOfFollower = 2;
-	RRSprite.move(direction * speedOfFollower);
+	float RRspeedFollowing = 1.75;
+	RRSprite.move(direction * RRspeedFollowing);
 	//typed myself, but helped by Shane Moran
 
 }
@@ -72,6 +72,11 @@ void enemyRR::checkBoundryRR(sf::Vector2f t_pos)
 	{
 		RRdirection++;
 	}
+}
+
+sf::FloatRect enemyRR::getBoundingBoxRR()
+{
+	return RRSprite.getGlobalBounds();
 }
 
 

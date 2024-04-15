@@ -130,3 +130,8 @@ void Player::boundry(sf::Vector2f t_pos)
 	}
 }
 
+sf::FloatRect Player::playerBoundingBox()
+{
+	return m_playerSprite.getGlobalBounds();
+}
+

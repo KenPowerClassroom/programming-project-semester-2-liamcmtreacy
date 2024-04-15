@@ -156,15 +156,18 @@ void Game::update()
 		myPlayer.moveDown(); // calling move down function
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) 
 	{
 		isBulletActive = true;
 		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 		playerBullet.shootBulletUp();
+		playerBullet.shootBulletdown();
+		playerBullet.shootBulletRight();
+		playerBullet.shootBulletLeft();
 	}
 
 	// update any game variables here 
-	//bullet move 
+	//bullet move
 	playerBullet.bulletMove();
 	//AA move
 	arrayAA[0].moveAA();
@@ -180,6 +183,24 @@ void Game::update()
 	//RR check boundry
 	arrayRR[0].checkBoundryRR(arrayRR[0].getRRbody().getPosition());
 	arrayRR[1].checkBoundryRR(arrayRR[1].getRRbody().getPosition());
+	//ENEMY AND BULLET COLLISION FOR AA
+	for (int counter = 0; counter < MAXAA; counter++)
+	{
+		if (playerBullet.boundingBox().intersects(arrayAA[counter].AAboundingBox()))
+		{
+			arrayAA[counter].setPositionAA();
+		}
+	}
+	//ENEMY AND BULLET COLLISION FOR RR
+	for (int index = 0; index < MAXRR; index++)
+	{
+		if (playerBullet.boundingBox().intersects(arrayRR[index].getBoundingBoxRR()))
+		{
+			arrayRR[index].setPositionRR();
+		}
+	}
+	//PLAYER COLLISION DETECTION
+	collisionDetection();
 }
 
 void Game::draw()
@@ -235,3 +256,23 @@ void Game::setUpRR()
 		arrayRR[0].setPositionRR(400, 400);
 		arrayRR[1].setPositionRR(600, 150);
 }
+
+void Game::collisionDetection()
+{
+	for (int plus = 0; plus < MAXAA; plus++)
+	{
+		if (myPlayer.playerBoundingBox().intersects(arrayAA[plus].AAboundingBox()))
+		{
+			myPlayer.setPosition();
+		}
+	}
+
+	for (int add = 0; add < MAXRR; add++)
+	{
+		if (myPlayer.playerBoundingBox().intersects(arrayRR[add].getBoundingBoxRR()))
+		{
+			myPlayer.setPosition();
+		}
+	}
+}
+

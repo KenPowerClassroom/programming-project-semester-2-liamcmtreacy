@@ -1,6 +1,7 @@
 #include "bullet.h"
 #include "Globals.h"
 #include "Game.h"
+// all typed by me, but was helped in Retention by Peter
 
 Bullet::Bullet()
 {
@@ -43,7 +44,7 @@ void Bullet::loadBullet()
 void Bullet::shootBulletLeft()
 {
 	bulletDirection = EAST;
-	m_fireballSprite.setTexture(m_fireballUpTexture);
+	m_fireballSprite.setTexture(m_fireballLeftTexture);
 }
 
 void Bullet::shootBulletUp()
@@ -64,8 +65,9 @@ void Bullet::shootBulletRight()
 	m_fireballSprite.setTexture(m_fireballRightTexture);
 }
 
-void Bullet::setPositionBullet()
+sf::FloatRect Bullet::boundingBox()
 {
+	return m_fireballSprite.getGlobalBounds();
 }
 
 bool Bullet::bulletMove()
@@ -74,9 +76,29 @@ bool Bullet::bulletMove()
 	{
 		m_fireballSprite.move(0, -10);
 		return true;
+		if (m_fireballSprite.getPosition().y > SCREEN_HEIGHT)
+		{
+			return false;
+		}
 	}
 
-	if (m_fireballSprite.getPosition().y < 0);
+	if (bulletDirection == SOUTH)
+	{
+		m_fireballSprite.move(0, 10);
+		return true;
+	}
+	if (bulletDirection == WEST)
+	{
+		m_fireballSprite.move(6, 0);
+		return true;
+	}
+	if (bulletDirection == EAST)
+	{
+		m_fireballSprite.move(0, 6);
+		return true;
+	}
+
+	if (m_fireballSprite.getPosition().y < 0.0f);
 	{
 		return false;
 	}
