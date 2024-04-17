@@ -2,6 +2,7 @@
 #pragma once
 
 #include "SFML/Graphics.hpp" 
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <cstdlib>  // include support for randomizing
 #include <ctime>   // supports ctime function
@@ -56,7 +57,7 @@ public:	  // declaration of member functions
 	void setUpAA(); // set position of AA enemy
 	void setUpRR(); // set position of RR enemy
 	void collisionDetection(); // too see if the player hit the enemies
-	void GameOver(); //gameOver
+	void setUpAudio();
 
 	bool isPlayerAlive = true;
 };

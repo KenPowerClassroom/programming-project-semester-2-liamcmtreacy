@@ -93,12 +93,6 @@ void Game::loadContent()
 	m_timer.setFillColor(sf::Color::White); // set the text colour
 	m_timer.setPosition(10, 130);  // its position on the screen
 
-	m_gameOver.setFont(m_font);
-	m_gameOver.setCharacterSize(60);
-	m_gameOver.setOutlineColor(sf::Color::Black);
-	m_gameOver.setFillColor(sf::Color::Red);
-	m_gameOver.setPosition(500, 500);
-
 	setUpAA();
 	setUpRR();
 	loadBackground();
@@ -249,8 +243,11 @@ void Game::update()
 	{
 		m_healthBar.setFillColor(sf::Color::Red);
 	}
-	//GAME OVER
-	GameOver();
+
+	if (life == 0)
+	{
+
+	}
 }
 
 void Game::draw()
@@ -326,16 +323,12 @@ void Game::collisionDetection()
 			myPlayer.setPosition();
 			life--;
 			arrayRR[0].setPositionRR(800, 700);
-			arrayRR[1].setPositionRR(1000, 700);
+			arrayRR[1].setPositionRR(1000, 50);
 		}
 	}
 }
 
-void Game::GameOver()
+void Game::setUpAudio()
 {
-	if (life <= 0)
-	{
-		window.draw(m_gameOver);
-	}
 }
 

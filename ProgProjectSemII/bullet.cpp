@@ -6,6 +6,7 @@
 Bullet::Bullet()
 {
 	loadBullet();
+	loadLaserSound();
 }
 
 sf::Sprite Bullet::getBulletBody()
@@ -46,6 +47,10 @@ void Bullet::shootBulletLeft()
 	isBulletActive = true;
 	bulletDirection = WEST;
 	m_fireballSprite.setTexture(m_fireballLeftTexture);
+	laserBlast.setBuffer(laserShoot);
+	laserBlast.play();
+	laserBlast.setPitch(1.0f);
+	laserBlast.setLoop(false);
 }
 
 void Bullet::shootBulletUp()
@@ -53,6 +58,10 @@ void Bullet::shootBulletUp()
 	isBulletActive = true;
 	bulletDirection = NORTH;
 	m_fireballSprite.setTexture(m_fireballUpTexture);
+	laserBlast.setBuffer(laserShoot);
+	laserBlast.play();
+	laserBlast.setPitch(1.0f);
+	laserBlast.setLoop(false);
 }
 
 void Bullet::shootBulletdown()
@@ -60,6 +69,10 @@ void Bullet::shootBulletdown()
 	isBulletActive = true;
 	bulletDirection = SOUTH;
 	m_fireballSprite.setTexture(m_fireballDownTexture);
+	laserBlast.setBuffer(laserShoot);
+	laserBlast.play();
+	laserBlast.setPitch(1.0f);
+	laserBlast.setLoop(false);
 }
 
 void Bullet::shootBulletRight()
@@ -67,6 +80,10 @@ void Bullet::shootBulletRight()
 	isBulletActive = true;
 	bulletDirection = EAST;
 	m_fireballSprite.setTexture(m_fireballRightTexture);
+	laserBlast.setBuffer(laserShoot);
+	laserBlast.play();
+	laserBlast.setPitch(1.0f);
+	laserBlast.setLoop(false);
 }
 
 sf::FloatRect Bullet::boundingBox()
@@ -123,4 +140,12 @@ bool Bullet::isActive()
 void Bullet::setNotActive()
 {
 	isBulletActive = false;
+}
+
+void Bullet::loadLaserSound()
+{
+	if (!laserShoot.loadFromFile("ASSETS\\AUDIO\\laser.wav"))
+	{
+		std::cout << "error loading the laser sound effect";
+	}
 }
