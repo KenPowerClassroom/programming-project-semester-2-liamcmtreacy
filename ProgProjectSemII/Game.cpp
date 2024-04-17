@@ -3,7 +3,10 @@
 // Date: 20/03/24
 // Approximate time taken: 
 //---------------------------------------------------------------------------
-// Project description: TEMPLATE
+// Project description: Magnet Misadventure is a small shooting game created by me,
+// In this game you are a magnet who is trying to destroy all the rubbish that is trying to kill you, you shoot with W S A D and MOVE 
+// with Up, Down, Left and Right, the game ends when you are out of health and lives, you are trying to get as many enemies killed as you can 
+// and gain as high a score as you possibly can.
 // ---------------------------------------------------------------------------
 // Known Bugs:
 // ?
@@ -71,7 +74,7 @@ void Game::loadContent()
 	m_score.setFillColor(sf::Color::White); // color
 	m_score.setPosition(10, 40);  // score total and its position on the screen
 
-	m_healthBar.setFillColor(sf::Color::Red);
+	m_healthBar.setFillColor(sf::Color::Green);
 	m_healthBar.setSize(sf::Vector2f{100.0f, 50.0f });
 	m_healthBar.setPosition(1400.0f, 0.0f);
 
@@ -84,7 +87,17 @@ void Game::loadContent()
 	m_enemiesKilled.setCharacterSize(24); // set the text size
 	m_enemiesKilled.setFillColor(sf::Color::White); // set the text colour
 	m_enemiesKilled.setPosition(10, 100);  // its position on the screen
-	//int to string
+
+	m_timer.setFont(m_font);  // set the font for the text
+	m_timer.setCharacterSize(24); // set the text size
+	m_timer.setFillColor(sf::Color::White); // set the text colour
+	m_timer.setPosition(10, 130);  // its position on the screen
+
+	m_gameOver.setFont(m_font);
+	m_gameOver.setCharacterSize(60);
+	m_gameOver.setOutlineColor(sf::Color::Black);
+	m_gameOver.setFillColor(sf::Color::Red);
+	m_gameOver.setPosition(500, 500);
 
 	setUpAA();
 	setUpRR();
@@ -208,6 +221,8 @@ void Game::update()
 			enemiesKilled = enemiesKilled + 1;
 			gameScore = gameScore + 100;
 			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+			playerBullet.setNotActive();
+
 		}
 	}
 	//ENEMY AND BULLET COLLISION FOR RR
@@ -219,10 +234,23 @@ void Game::update()
 			enemiesKilled = enemiesKilled+ 1;
 			gameScore = gameScore + 200;
 			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+			playerBullet.setNotActive();
 		}
 	}
 	//PLAYER COLLISION DETECTION
 	collisionDetection();
+	//update Health Bar
+	if (life == 3 || life == 2)
+	{
+		m_healthBar.setFillColor(sf::Color::Yellow);
+	}
+
+	if (life == 1)
+	{
+		m_healthBar.setFillColor(sf::Color::Red);
+	}
+	//GAME OVER
+	GameOver();
 }
 
 void Game::draw()
@@ -233,7 +261,7 @@ void Game::draw()
 
 	m_message.setString("Welcome to Liam's Game");
 	m_score.setString("Score: " + std::to_string(gameScore));
-	m_lives.setString("Lives: " );
+	m_lives.setString("Lives: " + std::to_string(life));
 	m_enemiesKilled.setString("Enemies Killed: " + std::to_string(enemiesKilled));
 	window.draw(BGSprite); // draw the Sprite for background
 	window.draw(m_score); // write score to the screen
@@ -242,7 +270,9 @@ void Game::draw()
 	window.draw(m_message);  // write message to the screen
 	window.draw(m_healthBar);// health bar for player
 	window.draw(myPlayer.getBody()); // draw the player character
-	window.draw(playerBullet.getBulletBody());
+	
+	if(playerBullet.isActive())
+		window.draw(playerBullet.getBulletBody());
 
 	for (int count = 0; count < MAXRR; count++)
 	{
@@ -286,15 +316,26 @@ void Game::collisionDetection()
 		if (myPlayer.playerBoundingBox().intersects(arrayAA[plus].AAboundingBox()))
 		{
 			myPlayer.setPosition();
+			life--;
 		}
 	}
-
 	for (int add = 0; add < MAXRR; add++)
 	{
 		if (myPlayer.playerBoundingBox().intersects(arrayRR[add].getBoundingBoxRR()))
 		{
 			myPlayer.setPosition();
+			life--;
+			arrayRR[0].setPositionRR(800, 700);
+			arrayRR[1].setPositionRR(1000, 700);
 		}
+	}
+}
+
+void Game::GameOver()
+{
+	if (life <= 0)
+	{
+		window.draw(m_gameOver);
 	}
 }
 

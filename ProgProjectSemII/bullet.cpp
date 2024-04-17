@@ -114,3 +114,13 @@ bool Bullet::bulletMove()
 void Bullet::speedBulletUp()
 {
 }
+
+bool Bullet::isActive()
+{
+	return isBulletActive;
+}
+
+void Bullet::setNotActive()
+{
+	isBulletActive = false;
+}

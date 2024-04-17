@@ -7,6 +7,9 @@ class enemyRR // Rusty Raymond "RR" is a follower enemy, he is slower but follow
 {
 	sf::Texture RRTexture; // RR Texture
 	sf::Sprite RRSprite; // RR sprite
+	sf::Texture RRupText; // RR Texture
+	sf::Texture RRleftText; // RR Texture
+	sf::Texture RRrightTexture; // RR Texture
 
 	int RRspeed; // how fast is he travelling
 	int RRdirection; // what direction is he facing
@@ -23,6 +26,5 @@ public:
 	void setPositionRR(int xPos, int yPos); // set position for the enemy RR
 	void moveRR(const sf::Vector2f& playerPosition); // follow the player
 	void checkBoundryRR(sf::Vector2f t_pos); //boundrychecking
-	sf::FloatRect getBoundingBoxRR();
-	void respawn();
+	sf::FloatRect getBoundingBoxRR(); // used for collision detection
 };

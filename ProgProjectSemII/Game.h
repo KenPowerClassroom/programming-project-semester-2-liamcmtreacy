@@ -34,6 +34,8 @@ public:
 	sf::Text m_score;
 	sf::Text m_lives;
 	sf::Text m_enemiesKilled;
+	sf::Text m_gameOver;
+	sf::Text m_timer;
 
 	sf::Sprite BGSprite;
 	sf::Texture BGTexture;
@@ -41,17 +43,20 @@ public:
 
 	int enemiesKilled = 0;
 	int gameScore = 0;
+	int life = 5;
+	float gameTimer = 0.0f;
 
 public:	  // declaration of member functions	
 	Game(); // default constructor
-	void	loadContent();
-	void	run();
-	void	update(); // call everything in update
-	void	draw();
+	void	loadContent(); // loads game
+	void	run(); // run game
+	void	update(); // anything that can be changed is called here
+	void	draw(); // draws everything
 	void loadBackground(); // loads background
 	void setUpAA(); // set position of AA enemy
 	void setUpRR(); // set position of RR enemy
-	void collisionDetection(); 
+	void collisionDetection(); // too see if the player hit the enemies
+	void GameOver(); //gameOver
 
-	
+	bool isPlayerAlive = true;
 };
