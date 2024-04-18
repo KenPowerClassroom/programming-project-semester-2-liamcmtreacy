@@ -104,6 +104,7 @@ void Game::loadContent()
 	setUpAA();
 	setUpRR();
 	loadBackground();
+	setUpAudio();
 }
 
 
@@ -264,9 +265,13 @@ void Game::update()
 		if (life == 0)
 		{
 			gameOver = true;
+			death.setBuffer(deathBuffer);
+			death.play();
+			death.setPitch(1.0f);
+			death.setLoop(false);
 		}
 		//rank system
-		if (gameScore >= 200)
+		if (gameScore <= 200)
 		{
 			playerRank.setString("F");
 		}
@@ -300,6 +305,11 @@ void Game::update()
 		{
 			playerRank.setString("S");
 		}
+
+		if (gameScore >= 20000)
+		{
+			playerRank.setString("S+");
+		}
 		// enemy speed up
 
 		if (gameScore >= 3000)
@@ -313,6 +323,13 @@ void Game::update()
 		{
 			arrayRR[0].speedUpRR();
 			arrayRR[1].speedUpRR();
+		}
+
+		if (gameScore >= 7000)
+		{
+			arrayAA[0].speedEvenFaster();
+			arrayAA[1].speedEvenFaster();
+			arrayAA[2].speedEvenFaster();
 		}
 	}
 }
@@ -381,7 +398,7 @@ void Game::setUpAA() // set up positions
 {
 		arrayAA[0].setPositionAA(200, 200);
 		arrayAA[1].setPositionAA(780, 100);
-		arrayAA[2].setPositionAA(1400, 150);	
+		arrayAA[2].setPositionAA(1400, 150);
 }
 
 void Game::setUpRR() // set up RR Positions
@@ -416,6 +433,10 @@ void Game::collisionDetection()
 
 void Game::setUpAudio()
 {
+	if (!deathBuffer.loadFromFile("ASSETS\\AUDIO\\death.wav"))
+	{
+		std::cout << "ERROR LOADING THE DEATH SOUND" << std::endl;
+	}
 }
 
 

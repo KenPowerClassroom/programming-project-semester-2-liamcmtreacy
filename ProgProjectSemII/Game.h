@@ -47,6 +47,9 @@ public:
 	sf::Texture GOTexture;
 	sf::RectangleShape m_healthBar;
 
+	sf::Sound death;
+	sf::SoundBuffer deathBuffer;
+
 	int enemiesKilled = 0;
 	int gameScore = 0;
 	int life = 5;

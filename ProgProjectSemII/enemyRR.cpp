@@ -96,7 +96,7 @@ sf::FloatRect enemyRR::getBoundingBoxRR()
 
 void enemyRR::speedUpRR()
 {
-	RRspeed++;
+	RRspeed = RRspeed+1;
 }
 
 

@@ -119,6 +119,11 @@ void enemyAA::speedUp()
 	speed = 8;
 }
 
+void enemyAA::speedEvenFaster()
+{
+	speed = 12;
+}
+
 sf::FloatRect enemyAA::AAboundingBox()
 {
 	return m_AAEnemySprite.getGlobalBounds();
