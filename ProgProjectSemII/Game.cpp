@@ -290,7 +290,20 @@ void Game::update()
 	{
 		playerRank.setString("S");
 	}
+	// enemy speed up
 
+	if (gameScore >= 3000)
+	{
+		arrayAA[0].speedUp();
+		arrayAA[1].speedUp();
+		arrayAA[2].speedUp();
+	}
+
+	if (gameScore >= 6500)
+	{
+		arrayRR[0].speedUpRR();
+		arrayRR[1].speedUpRR();
+	}
 }
 
 void Game::draw()
@@ -362,9 +375,7 @@ void Game::collisionDetection()
 		{
 			myPlayer.setPosition();
 			life--;
-			arrayAA[0].setPositionAA(100, 100);
-			arrayAA[1].setPositionAA(500, 500);
-			arrayAA[2].setPositionAA(750, 90);
+			gameScore = gameScore - 100;
 		}
 	}
 	for (int add = 0; add < MAXRR; add++)
@@ -373,6 +384,7 @@ void Game::collisionDetection()
 		{
 			myPlayer.setPosition();
 			life--;
+			gameScore = gameScore - 100;
 			arrayRR[0].setPositionRR(800, 700);
 			arrayRR[1].setPositionRR(1000, 50);
 		}

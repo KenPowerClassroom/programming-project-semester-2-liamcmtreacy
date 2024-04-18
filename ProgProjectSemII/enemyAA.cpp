@@ -116,6 +116,7 @@ void enemyAA::setDirectionAA()
 
 void enemyAA::speedUp()
 {
+	speed = 8;
 }
 
 sf::FloatRect enemyAA::AAboundingBox()
