@@ -82,8 +82,9 @@ void Game::loadContent()
 
 	m_enemiesKilled.setFont(m_font);  // set the font for the text
 	m_enemiesKilled.setCharacterSize(24); // set the text size
-	m_enemiesKilled.setFillColor(sf::Color::White); // set the text colour
+	m_enemiesKilled.setFillColor(sf::Color::Yellow); // set the text colour
 	m_enemiesKilled.setPosition(10, 100);  // its position on the screen
+	m_enemiesKilled.setOutlineColor(sf::Color::Black);
 
 	m_timer.setFont(m_font);  // set the font for the text
 	m_timer.setCharacterSize(24); // set the text size
@@ -225,12 +226,11 @@ void Game::update()
 		//ENEMY AND BULLET COLLISION FOR AA
 		for (int counter = 0; counter < MAXAA; counter++)
 		{
-			if (playerBullet.boundingBox().intersects(arrayAA[counter].AAboundingBox()))
+			if (playerBullet.boundingBox().intersects(arrayAA[counter].AAboundingBox()) && playerBullet.isActive())
 			{
 				arrayAA[counter].setPositionAA();
 				enemiesKilled = enemiesKilled + 1;
 				gameScore = gameScore + 100;
-				std::cout << "killk"  << gameScore << std::endl;
 				playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 				playerBullet.setNotActive();
 			}
@@ -238,13 +238,12 @@ void Game::update()
 		//ENEMY AND BULLET COLLISION FOR RR
 		for (int index = 0; index < MAXRR; index++)
 		{
-			if (playerBullet.boundingBox().intersects(arrayRR[index].getBoundingBoxRR()))
+			if (playerBullet.boundingBox().intersects(arrayRR[index].getBoundingBoxRR()) && playerBullet.isActive())
 			{
 				arrayRR[0].setPositionRR(1110, 0);
 				arrayRR[1].setPositionRR(500, 200);
 				enemiesKilled = enemiesKilled + 1;
 				gameScore = gameScore + 200;
-				std::cout << "kill 2" << std::endl;
 				playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 				playerBullet.setNotActive();
 			}
@@ -324,7 +323,13 @@ void Game::draw()
 	window.clear();
 	if (gameOver)
 	{
+		m_score.setString("Your Final Score: " + std::to_string(gameScore));
+		m_enemiesKilled.setString("The number of Enemies you killed: " + std::to_string(enemiesKilled));
+		m_message.setString("Press R to reset and have more fun");
 		gameOverScreen.draw(window);
+		window.draw(m_score);
+		window.draw(m_enemiesKilled);
+		window.draw(m_message);
 	}
 	else
 	{
@@ -414,7 +419,7 @@ void Game::setUpAudio()
 }
 
 
-void Game::reset()
+void Game::reset() // don e with some assistance from Pete
 {
 	gameOver = false;
 	life = 5;
