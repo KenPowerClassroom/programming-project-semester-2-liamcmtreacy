@@ -151,194 +151,212 @@ void Game::run()
 void Game::update()
 // This function takes the keyboard input and updates the game world
 {
-	gameTimer++;
-	// get keyboard input
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (gameOver)
 	{
-		myPlayer.moveLeft(); // calling move left function
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	{
-		myPlayer.moveRight(); // calling moveRight function
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-	{
-		myPlayer.moveUp(); // calling move up function
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	{
-		myPlayer.moveDown(); // calling move down function
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
-		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
-		playerBullet.shootBulletUp();
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	{
-		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
-		playerBullet.shootBulletLeft();
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
-		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
-		playerBullet.shootBulletdown();
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	{
-		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
-		playerBullet.shootBulletRight();
-	}
-
-
-	// update any game variables here 
-	//bullet move
-	playerBullet.bulletMove();
-	//AA move
-	arrayAA[0].moveAA();
-	arrayAA[1].moveAA();
-	arrayAA[2].moveAA();
-	//AA boundry checking
-	arrayAA[0].checkBoundry(arrayAA[0].getEnemyBody().getPosition());
-	arrayAA[1].checkBoundry(arrayAA[1].getEnemyBody().getPosition());
-	arrayAA[2].checkBoundry(arrayAA[2].getEnemyBody().getPosition());
-	//RR movement
-	arrayRR[0].moveRR(myPlayer.getBody().getPosition());
-	arrayRR[1].moveRR(myPlayer.getBody().getPosition());
-	//RR check boundry
-	arrayRR[0].checkBoundryRR(arrayRR[0].getRRbody().getPosition());
-	arrayRR[1].checkBoundryRR(arrayRR[1].getRRbody().getPosition());
-	//ENEMY AND BULLET COLLISION FOR AA
-	for (int counter = 0; counter < MAXAA; counter++)
-	{
-		if (playerBullet.boundingBox().intersects(arrayAA[counter].AAboundingBox()))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 		{
-			arrayAA[counter].setPositionAA();
-			enemiesKilled = enemiesKilled + 1;
-			gameScore = gameScore + 100;
-			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
-			playerBullet.setNotActive();
+			reset();
 		}
 	}
-	//ENEMY AND BULLET COLLISION FOR RR
-	for (int index = 0; index < MAXRR; index++)
+	else
 	{
-		if (playerBullet.boundingBox().intersects(arrayRR[index].getBoundingBoxRR()))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
-			arrayRR[0].setPositionRR(1110, 0);
-			arrayRR[1].setPositionRR(500, 200);
-			enemiesKilled = enemiesKilled+ 1;
-			gameScore = gameScore + 200;
-			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
-			playerBullet.setNotActive();
+			myPlayer.moveLeft(); // calling move left function
 		}
-	}
-	//PLAYER COLLISION DETECTION
-	collisionDetection();
-	//update Health Bar
-	if (life == 3 || life == 2)
-	{
-		m_healthBar.setFillColor(sf::Color::Yellow);
-	}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			myPlayer.moveRight(); // calling moveRight function
+		}
 
-	if (life == 1)
-	{
-		m_healthBar.setFillColor(sf::Color::Red);
-	}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		{
+			myPlayer.moveUp(); // calling move up function
+		}
 
-	if (life == 0)
-	{
-	}
-	//rank system
-	if (gameScore >= 200)
-	{
-		playerRank.setString("F");
-	}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		{
+			myPlayer.moveDown(); // calling move down function
+		}
 
-	if (gameScore >= 750)
-	{
-		playerRank.setString("E");
-	}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		{
+			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+			playerBullet.shootBulletUp();
+		}
 
-	if (gameScore >= 2100)
-	{
-		playerRank.setString("D");
-	}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		{
+			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+			playerBullet.shootBulletLeft();
+		}
 
-	if (gameScore >= 4500)
-	{
-		playerRank.setString("C");
-	}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		{
+			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+			playerBullet.shootBulletdown();
+		}
 
-	if (gameScore >= 7000)
-	{
-		playerRank.setString("B");
-	}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+			playerBullet.shootBulletRight();
+		}
 
-	if (gameScore >= 9325)
-	{
-		playerRank.setString("A");
-	}
 
-	if (gameScore >= 12000)
-	{
-		playerRank.setString("S");
-	}
-	// enemy speed up
 
-	if (gameScore >= 3000)
-	{
-		arrayAA[0].speedUp();
-		arrayAA[1].speedUp();
-		arrayAA[2].speedUp();
-	}
+		// update any game variables here 
+		//bullet move
+		playerBullet.bulletMove();
+		//AA move
+		arrayAA[0].moveAA();
+		arrayAA[1].moveAA();
+		arrayAA[2].moveAA();
+		//AA boundry checking
+		arrayAA[0].checkBoundry(arrayAA[0].getEnemyBody().getPosition());
+		arrayAA[1].checkBoundry(arrayAA[1].getEnemyBody().getPosition());
+		arrayAA[2].checkBoundry(arrayAA[2].getEnemyBody().getPosition());
+		//RR movement
+		arrayRR[0].moveRR(myPlayer.getBody().getPosition());
+		arrayRR[1].moveRR(myPlayer.getBody().getPosition());
+		//RR check boundry
+		arrayRR[0].checkBoundryRR(arrayRR[0].getRRbody().getPosition());
+		arrayRR[1].checkBoundryRR(arrayRR[1].getRRbody().getPosition());
+		//ENEMY AND BULLET COLLISION FOR AA
+		for (int counter = 0; counter < MAXAA; counter++)
+		{
+			if (playerBullet.boundingBox().intersects(arrayAA[counter].AAboundingBox()))
+			{
+				arrayAA[counter].setPositionAA();
+				enemiesKilled = enemiesKilled + 1;
+				gameScore = gameScore + 100;
+				std::cout << "killk"  << gameScore << std::endl;
+				playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+				playerBullet.setNotActive();
+			}
+		}
+		//ENEMY AND BULLET COLLISION FOR RR
+		for (int index = 0; index < MAXRR; index++)
+		{
+			if (playerBullet.boundingBox().intersects(arrayRR[index].getBoundingBoxRR()))
+			{
+				arrayRR[0].setPositionRR(1110, 0);
+				arrayRR[1].setPositionRR(500, 200);
+				enemiesKilled = enemiesKilled + 1;
+				gameScore = gameScore + 200;
+				std::cout << "kill 2" << std::endl;
+				playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+				playerBullet.setNotActive();
+			}
+		}
+		//PLAYER COLLISION DETECTION
+		collisionDetection();
+		//update Health Bar
+		if (life == 3 || life == 2)
+		{
+			m_healthBar.setFillColor(sf::Color::Yellow);
+		}
 
-	if (gameScore >= 6500)
-	{
-		arrayRR[0].speedUpRR();
-		arrayRR[1].speedUpRR();
+		if (life == 1)
+		{
+			m_healthBar.setFillColor(sf::Color::Red);
+		}
+
+		if (life == 0)
+		{
+			gameOver = true;
+		}
+		//rank system
+		if (gameScore >= 200)
+		{
+			playerRank.setString("F");
+		}
+
+		if (gameScore >= 750)
+		{
+			playerRank.setString("E");
+		}
+
+		if (gameScore >= 2100)
+		{
+			playerRank.setString("D");
+		}
+
+		if (gameScore >= 4500)
+		{
+			playerRank.setString("C");
+		}
+
+		if (gameScore >= 7000)
+		{
+			playerRank.setString("B");
+		}
+
+		if (gameScore >= 9325)
+		{
+			playerRank.setString("A");
+		}
+
+		if (gameScore >= 12000)
+		{
+			playerRank.setString("S");
+		}
+		// enemy speed up
+
+		if (gameScore >= 3000)
+		{
+			arrayAA[0].speedUp();
+			arrayAA[1].speedUp();
+			arrayAA[2].speedUp();
+		}
+
+		if (gameScore >= 6500)
+		{
+			arrayRR[0].speedUpRR();
+			arrayRR[1].speedUpRR();
+		}
 	}
 }
-
 void Game::draw()
 // This function draws the game world
 {
 	// Clear the screen and draw your game sprites
 	window.clear();
-
-	m_message.setString("Welcome to Liam's Game");
-	m_score.setString("Score: " + std::to_string(gameScore));
-	m_lives.setString("Health: " + std::to_string(life));
-	m_enemiesKilled.setString("Enemies Killed: " + std::to_string(enemiesKilled));
-	Rank.setString("Rank: ");
-	window.draw(BGSprite); // draw the Sprite for background
-	window.draw(m_score); // write score to the screen
-	window.draw(m_lives); // health count
-	window.draw(Rank);
-	window.draw(playerRank);
-	window.draw(m_enemiesKilled); // how many enemies were killed
-	window.draw(m_message);  // write message to the screen
-	window.draw(m_healthBar);// health bar for player
-	window.draw(myPlayer.getBody()); // draw the player character
-	
-	if (playerBullet.isActive())
+	if (gameOver)
 	{
-		window.draw(playerBullet.getBulletBody());
+		gameOverScreen.draw(window);
 	}
+	else
+	{
+		m_message.setString("Welcome to Liam's Game");
+		m_score.setString("Score: " + std::to_string(gameScore));
+		m_lives.setString("Health: " + std::to_string(life));
+		m_enemiesKilled.setString("Enemies Killed: " + std::to_string(enemiesKilled));
+		Rank.setString("Rank: ");
+		window.draw(BGSprite); // draw the Sprite for background
+		window.draw(m_score); // write score to the screen
+		window.draw(m_lives); // health count
+		window.draw(Rank);
+		window.draw(playerRank);
+		window.draw(m_enemiesKilled); // how many enemies were killed
+		window.draw(m_message);  // write message to the screen
+		window.draw(m_healthBar);// health bar for player
+		window.draw(myPlayer.getBody()); // draw the player character
 
-	for (int count = 0; count < MAXRR; count++)
-	{
-		window.draw(arrayRR[count].getRRbody());
-	}
-	for (int plus = 0; plus < MAXAA; plus++)
-	{
-		window.draw(arrayAA[plus].getEnemyBody());
+		if (playerBullet.isActive())
+		{
+			window.draw(playerBullet.getBulletBody());
+		}
+
+		for (int count = 0; count < MAXRR; count++)
+		{
+			window.draw(arrayRR[count].getRRbody());
+		}
+		for (int plus = 0; plus < MAXAA; plus++)
+		{
+			window.draw(arrayAA[plus].getEnemyBody());
+		}
+
 	}
 	window.display();
 }
@@ -356,14 +374,14 @@ void Game::loadBackground()
 
 void Game::setUpAA() // set up positions
 {
-		arrayAA[0].setPositionAA(300, 300);
-		arrayAA[1].setPositionAA(480, 100);
-		arrayAA[2].setPositionAA(1400, 250);	
+		arrayAA[0].setPositionAA(200, 200);
+		arrayAA[1].setPositionAA(780, 100);
+		arrayAA[2].setPositionAA(1400, 150);	
 }
 
 void Game::setUpRR() // set up RR Positions
 {
-		arrayRR[0].setPositionRR(400, 400);
+		arrayRR[0].setPositionRR(100, 100);
 		arrayRR[1].setPositionRR(600, 150);
 }
 
@@ -395,6 +413,18 @@ void Game::setUpAudio()
 {
 }
 
-void Game::endGame()
+
+void Game::reset()
 {
+	gameOver = false;
+	life = 5;
+	gameScore = 0;
+	m_score.setString("Score: " + std::to_string(gameScore));
+	enemiesKilled = 0;
+	myPlayer.setPosition(400.0f, 400.0f);
+	std::cout << "reset" << std::endl;
+	setUpAA();
+	setUpRR();
+	playerBullet.setPositionBullet(sf::Vector2f{ 400.0f,400.0f });
+	m_healthBar.setFillColor(sf::Color::Green);
 }

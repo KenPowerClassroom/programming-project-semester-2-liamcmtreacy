@@ -24,6 +24,7 @@ class Game
 	Player myPlayer;
 	enemyAA arrayAA[3]; // standard enemy, named AA
 	enemyRR arrayRR[2]; // FOLLOWER ENEMY. NAMED RUSTY RAYMOND
+	GameOver gameOverScreen; // game over screen
 
 	Bullet playerBullet;
 	sf::RenderWindow window;
@@ -50,6 +51,7 @@ public:
 	int gameScore = 0;
 	int life = 5;
 	float gameTimer = 0.0f;
+	bool gameOver = false;
 
 public:	  // declaration of member functions	
 	Game(); // default constructor
@@ -61,6 +63,6 @@ public:	  // declaration of member functions
 	void setUpAA(); // set position of AA enemy
 	void setUpRR(); // set position of RR enemy
 	void collisionDetection(); // too see if the player hit the enemies
-	void setUpAudio();
-	void endGame();
+	void setUpAudio(); // audio for game
+	void reset(); // resets the game
 };

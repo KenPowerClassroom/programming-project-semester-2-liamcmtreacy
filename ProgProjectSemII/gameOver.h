@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game.h"
+
 #include "Globals.h"
 #include "SFML/Graphics.hpp" 
 
@@ -12,4 +12,5 @@ class GameOver
 public:
 	GameOver();
 	void loadGOBackground();
+	void draw(sf::RenderWindow& t_window);
 };
