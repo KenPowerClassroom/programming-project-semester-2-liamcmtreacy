@@ -31,5 +31,6 @@ public:
 	void moveAA(); // allows movement
 	void checkBoundry(sf::Vector2f t_pos);
 	void setDirectionAA(); // Random Direction
+	void speedUp();
 	sf::FloatRect AAboundingBox(); // used for collision detection
 };

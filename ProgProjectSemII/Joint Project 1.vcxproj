@@ -126,6 +126,7 @@
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="enemyAA.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="gameOver.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="enemyRR.cpp" />
   </ItemGroup>
@@ -133,6 +134,7 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="enemyAA.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="gameOver.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="enemyRR.h" />

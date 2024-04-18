@@ -12,6 +12,7 @@
 #include "enemyAA.h"
 #include "enemyRR.h"
 #include "bullet.h"
+#include "gameOver.h"
 
 class Game
 {
@@ -35,11 +36,14 @@ public:
 	sf::Text m_score;
 	sf::Text m_lives;
 	sf::Text m_enemiesKilled;
-	sf::Text m_gameOver;
 	sf::Text m_timer;
+	sf::Text Rank;
+	sf::Text playerRank;
 
 	sf::Sprite BGSprite;
 	sf::Texture BGTexture;
+	sf::Sprite GOsprite;
+	sf::Texture GOTexture;
 	sf::RectangleShape m_healthBar;
 
 	int enemiesKilled = 0;
@@ -58,6 +62,5 @@ public:	  // declaration of member functions
 	void setUpRR(); // set position of RR enemy
 	void collisionDetection(); // too see if the player hit the enemies
 	void setUpAudio();
-
-	bool isPlayerAlive = true;
+	void endGame();
 };

@@ -20,6 +20,7 @@ class Player
 	int livesCount; // amount of lives
 	int health; // health of our player
 	int PlayerDirection; // what direction is player going
+	bool isPlayerLiving{ true };
 
 public:
 
@@ -34,4 +35,6 @@ public:
 	void moveDown(); // move down
 	void boundry(sf::Vector2f t_pos); // boundry checking
 	sf::FloatRect playerBoundingBox(); // too see if the player hit an enemy, used in collision detection
+	bool isPlayerAlive();
+	bool playerdead();
 };

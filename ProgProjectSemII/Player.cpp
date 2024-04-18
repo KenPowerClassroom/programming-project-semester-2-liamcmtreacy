@@ -135,3 +135,14 @@ sf::FloatRect Player::playerBoundingBox()
 	return m_playerSprite.getGlobalBounds();
 }
 
+bool Player::isPlayerAlive()
+{
+	return isPlayerLiving;
+}
+
+bool Player::playerdead()
+{
+	isPlayerLiving = false;
+	return isPlayerLiving;
+}
+

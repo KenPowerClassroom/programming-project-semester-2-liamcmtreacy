@@ -114,6 +114,10 @@ void enemyAA::setDirectionAA()
 	direction = (rand() % 4) + 1;
 }
 
+void enemyAA::speedUp()
+{
+}
+
 sf::FloatRect enemyAA::AAboundingBox()
 {
 	return m_AAEnemySprite.getGlobalBounds();

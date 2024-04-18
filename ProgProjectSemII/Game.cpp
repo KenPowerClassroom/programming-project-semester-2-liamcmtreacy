@@ -30,15 +30,12 @@
 #endif 
 #pragma comment(lib,"opengl32.lib") 
 #pragma comment(lib,"glu32.lib")
-
-
-
-
 #include "Game.h"   // include Game header file
 #include "enemyAA.h" // enemyAA header
 #include "Player.h" // player header
 #include "bullet.h" // bullet header
 #include "enemyRR.h" //RR header
+#include "gameOver.h" //gameOverheader
 
 
 int main()
@@ -93,6 +90,16 @@ void Game::loadContent()
 	m_timer.setFillColor(sf::Color::White); // set the text colour
 	m_timer.setPosition(10, 130);  // its position on the screen
 
+	Rank.setFont(m_font);  // set the font for the text
+	Rank.setCharacterSize(24); // set the text size
+	Rank.setFillColor(sf::Color::Yellow); // set the text colour
+	Rank.setPosition(1410, 730);  // its position on the screen
+
+	playerRank.setFont(m_font);  // set the font for the text
+	playerRank.setCharacterSize(24); // set the text size
+	playerRank.setFillColor(sf::Color::Yellow); // set the text colour
+	playerRank.setPosition(1470, 730);  // its position on the screen
+
 	setUpAA();
 	setUpRR();
 	loadBackground();
@@ -144,6 +151,7 @@ void Game::run()
 void Game::update()
 // This function takes the keyboard input and updates the game world
 {
+	gameTimer++;
 	// get keyboard input
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
@@ -216,7 +224,6 @@ void Game::update()
 			gameScore = gameScore + 100;
 			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 			playerBullet.setNotActive();
-
 		}
 	}
 	//ENEMY AND BULLET COLLISION FOR RR
@@ -224,7 +231,8 @@ void Game::update()
 	{
 		if (playerBullet.boundingBox().intersects(arrayRR[index].getBoundingBoxRR()))
 		{
-			arrayRR[index].setPositionRR();
+			arrayRR[0].setPositionRR(1110, 0);
+			arrayRR[1].setPositionRR(500, 200);
 			enemiesKilled = enemiesKilled+ 1;
 			gameScore = gameScore + 200;
 			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
@@ -246,8 +254,43 @@ void Game::update()
 
 	if (life == 0)
 	{
-
 	}
+	//rank system
+	if (gameScore >= 200)
+	{
+		playerRank.setString("F");
+	}
+
+	if (gameScore >= 750)
+	{
+		playerRank.setString("E");
+	}
+
+	if (gameScore >= 2100)
+	{
+		playerRank.setString("D");
+	}
+
+	if (gameScore >= 4500)
+	{
+		playerRank.setString("C");
+	}
+
+	if (gameScore >= 7000)
+	{
+		playerRank.setString("B");
+	}
+
+	if (gameScore >= 9325)
+	{
+		playerRank.setString("A");
+	}
+
+	if (gameScore >= 12000)
+	{
+		playerRank.setString("S");
+	}
+
 }
 
 void Game::draw()
@@ -258,18 +301,23 @@ void Game::draw()
 
 	m_message.setString("Welcome to Liam's Game");
 	m_score.setString("Score: " + std::to_string(gameScore));
-	m_lives.setString("Lives: " + std::to_string(life));
+	m_lives.setString("Health: " + std::to_string(life));
 	m_enemiesKilled.setString("Enemies Killed: " + std::to_string(enemiesKilled));
+	Rank.setString("Rank: ");
 	window.draw(BGSprite); // draw the Sprite for background
 	window.draw(m_score); // write score to the screen
-	window.draw(m_lives);
-	window.draw(m_enemiesKilled);
+	window.draw(m_lives); // health count
+	window.draw(Rank);
+	window.draw(playerRank);
+	window.draw(m_enemiesKilled); // how many enemies were killed
 	window.draw(m_message);  // write message to the screen
 	window.draw(m_healthBar);// health bar for player
 	window.draw(myPlayer.getBody()); // draw the player character
 	
-	if(playerBullet.isActive())
+	if (playerBullet.isActive())
+	{
 		window.draw(playerBullet.getBulletBody());
+	}
 
 	for (int count = 0; count < MAXRR; count++)
 	{
@@ -314,6 +362,9 @@ void Game::collisionDetection()
 		{
 			myPlayer.setPosition();
 			life--;
+			arrayAA[0].setPositionAA(100, 100);
+			arrayAA[1].setPositionAA(500, 500);
+			arrayAA[2].setPositionAA(750, 90);
 		}
 	}
 	for (int add = 0; add < MAXRR; add++)
@@ -332,3 +383,6 @@ void Game::setUpAudio()
 {
 }
 
+void Game::endGame()
+{
+}
