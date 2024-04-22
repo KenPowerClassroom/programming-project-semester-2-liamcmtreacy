@@ -55,7 +55,7 @@ Game::Game() : window(sf::VideoMode(static_cast<int>(SCREEN_WIDTH), static_cast<
 void Game::loadContent()
 // Load the font file & setup the message string
 {
-	if (!m_font.loadFromFile("ASSETS/FONTS/BebasNeue.otf"))
+	if (!m_font.loadFromFile("ASSETS/FONTS/simpsonsF.otf"))
 	{
 		std::cout << "error with font file file" << std::endl;
 	}
@@ -85,11 +85,6 @@ void Game::loadContent()
 	m_enemiesKilled.setFillColor(sf::Color::Yellow); // set the text colour
 	m_enemiesKilled.setPosition(10, 100);  // its position on the screen
 	m_enemiesKilled.setOutlineColor(sf::Color::Black);
-
-	m_timer.setFont(m_font);  // set the font for the text
-	m_timer.setCharacterSize(24); // set the text size
-	m_timer.setFillColor(sf::Color::White); // set the text colour
-	m_timer.setPosition(10, 130);  // its position on the screen
 
 	Rank.setFont(m_font);  // set the font for the text
 	Rank.setCharacterSize(24); // set the text size
@@ -205,8 +200,6 @@ void Game::update()
 			playerBullet.shootBulletRight();
 		}
 
-
-
 		// update any game variables here 
 		//bullet move
 		playerBullet.bulletMove();
@@ -249,6 +242,7 @@ void Game::update()
 				playerBullet.setNotActive();
 			}
 		}
+
 		//PLAYER COLLISION DETECTION
 		collisionDetection();
 		//update Health Bar
@@ -311,18 +305,11 @@ void Game::update()
 			playerRank.setString("S+");
 		}
 		// enemy speed up
-
 		if (gameScore >= 3000)
 		{
 			arrayAA[0].speedUp();
 			arrayAA[1].speedUp();
 			arrayAA[2].speedUp();
-		}
-
-		if (gameScore >= 6500)
-		{
-			arrayRR[0].speedUpRR();
-			arrayRR[1].speedUpRR();
 		}
 
 		if (gameScore >= 7000)
@@ -347,6 +334,8 @@ void Game::draw()
 		window.draw(m_score);
 		window.draw(m_enemiesKilled);
 		window.draw(m_message);
+		window.draw(Rank);
+		window.draw(playerRank);
 	}
 	else
 	{
@@ -358,8 +347,8 @@ void Game::draw()
 		window.draw(BGSprite); // draw the Sprite for background
 		window.draw(m_score); // write score to the screen
 		window.draw(m_lives); // health count
-		window.draw(Rank);
-		window.draw(playerRank);
+		window.draw(Rank); // rank text
+		window.draw(playerRank); // letter rank for player ranging from F - S+
 		window.draw(m_enemiesKilled); // how many enemies were killed
 		window.draw(m_message);  // write message to the screen
 		window.draw(m_healthBar);// health bar for player

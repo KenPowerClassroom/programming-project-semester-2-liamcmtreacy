@@ -28,11 +28,11 @@ public:
 	void shootBulletRight(); // shoot the bullet right
 	sf::FloatRect boundingBox(); //  get the bounding box, used for collision
 	bool bulletMove(); // move the bullet in 4 directions
-	void speedBulletUp(); // if a power up is aquired
 	bool isActive(); // check if bullet is active
 	void setNotActive(); // if the bullet collides, this sets the bool to false, so it despawns
 	//both isActive and setNotActive, I asked Ken for help with in the Wednesday Lab
-	void loadLaserSound();
+	void loadLaserSound(); // sound for shotting
+	void enemyFire();
 
 	sf::Sound laserBlast;
 	sf::SoundBuffer laserShoot;

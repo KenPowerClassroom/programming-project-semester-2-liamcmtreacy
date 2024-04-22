@@ -17,7 +17,6 @@ class Player
 
 	int speed; // speed of the player character
 	int image_width; //width of character sprite
-	int livesCount; // amount of lives
 	int health; // health of our player
 	int PlayerDirection; // what direction is player going
 	bool isPlayerLiving{ true };

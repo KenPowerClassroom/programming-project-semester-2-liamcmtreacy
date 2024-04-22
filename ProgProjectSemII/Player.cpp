@@ -13,7 +13,6 @@ Player::Player()
 	setPosition(xPos, yPos);
 
 	speed = 5;
-	livesCount = 3;
 }
 
 void Player::loadSprite()

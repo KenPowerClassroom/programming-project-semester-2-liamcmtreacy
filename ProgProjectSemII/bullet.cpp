@@ -128,10 +128,6 @@ bool Bullet::bulletMove()
 	return true;
 }
 
-void Bullet::speedBulletUp()
-{
-}
-
 bool Bullet::isActive()
 {
 	return isBulletActive;
@@ -148,4 +144,15 @@ void Bullet::loadLaserSound()
 	{
 		std::cout << "error loading the laser sound effect";
 	}
+}
+
+void Bullet::enemyFire()
+{
+	isBulletActive = true;
+	bulletDirection = EAST;
+	m_fireballSprite.setTexture(m_fireballRightTexture);
+	laserBlast.setBuffer(laserShoot);
+	laserBlast.play();
+	laserBlast.setPitch(1.0f);
+	laserBlast.setLoop(false);
 }

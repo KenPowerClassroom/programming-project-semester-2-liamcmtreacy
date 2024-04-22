@@ -26,7 +26,7 @@ class Game
 	enemyRR arrayRR[2]; // FOLLOWER ENEMY. NAMED RUSTY RAYMOND
 	GameOver gameOverScreen; // game over screen
 
-	Bullet playerBullet;
+	Bullet playerBullet; // player Bullet
 	sf::RenderWindow window;
 
 public:
@@ -34,12 +34,11 @@ public:
 	sf::Font m_font;  // font for writing text
 	sf::Text m_message;  // text to write on the screen
 
-	sf::Text m_score;
-	sf::Text m_lives;
-	sf::Text m_enemiesKilled;
-	sf::Text m_timer;
-	sf::Text Rank;
-	sf::Text playerRank;
+	sf::Text m_score; // score
+	sf::Text m_lives; // health
+	sf::Text m_enemiesKilled; // enemies killed counter
+	sf::Text Rank; // rank text
+	sf::Text playerRank; // the rank you recieve
 
 	sf::Sprite BGSprite;
 	sf::Texture BGTexture;

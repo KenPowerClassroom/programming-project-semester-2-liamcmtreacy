@@ -9,7 +9,6 @@ enemyAA::enemyAA()
 	loadEnemy();
 
 	setPositionAA();
-	strength = 2;
 	speed = 5;
 	enemyAlive = true;
 	direction = (rand()% 4) + 1;

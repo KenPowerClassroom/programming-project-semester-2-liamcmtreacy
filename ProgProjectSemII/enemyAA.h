@@ -13,10 +13,8 @@ class enemyAA // Aliminium Alphonso "AA" is a fast enemy who spawns more than RR
 	sf::Texture m_AAEnemyUp; // up texture
 	sf::Sprite m_AAEnemySprite; // AA sprite
 
-	int health; // how much health does he have
 	int speed; // how fast is he travelling
 	int direction; // what direction is he facing
-	int strength; // strength of enemy
 	bool enemyAlive; // is AA alive boolean
 
 public:
@@ -32,6 +30,6 @@ public:
 	void checkBoundry(sf::Vector2f t_pos);
 	void setDirectionAA(); // Random Direction
 	void speedUp(); // speed up 1
-	void speedEvenFaster();
+	void speedEvenFaster(); // FASTEST POSSIBLE SPEED WHEN POINTS REACH A CERTAIN AMOUNT
 	sf::FloatRect AAboundingBox(); // used for collision detection
 };

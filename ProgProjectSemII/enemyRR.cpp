@@ -7,7 +7,7 @@ enemyRR::enemyRR()
 	loadEnemy();
 	setPositionRR();
 
-	RRstrength = 4;
+	speed = 5;
 	RRalive = true;
 	RRdirection = EAST;
 }
@@ -93,10 +93,4 @@ sf::FloatRect enemyRR::getBoundingBoxRR()
 {
 	return RRSprite.getGlobalBounds();
 }
-
-void enemyRR::speedUpRR()
-{
-	RRspeed = RRspeed+1;
-}
-
 
