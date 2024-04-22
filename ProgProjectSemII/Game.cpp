@@ -55,7 +55,7 @@ Game::Game() : window(sf::VideoMode(static_cast<int>(SCREEN_WIDTH), static_cast<
 void Game::loadContent()
 // Load the font file & setup the message string
 {
-	if (!m_font.loadFromFile("ASSETS/FONTS/simpsonsF.otf"))
+	if (!m_font.loadFromFile("ASSETS/FONTS/BebasNeue.otf"))
 	{
 		std::cout << "error with font file file" << std::endl;
 	}
