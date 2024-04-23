@@ -28,7 +28,8 @@ public:
 	sf::FloatRect boundBox(); // used for collision detection
 	void moveAA(); // allows movement
 	void checkBoundry(sf::Vector2f t_pos);
-	void setDirectionAA(); // Random Direction
+	void setDirectionAA(); // Direction which the array moves
+	void resetSpeed(); // this is for when the player dies the speed resets
 	void speedUp(); // speed up 1
 	void speedEvenFaster(); // FASTEST POSSIBLE SPEED WHEN POINTS REACH A CERTAIN AMOUNT
 	sf::FloatRect AAboundingBox(); // used for collision detection

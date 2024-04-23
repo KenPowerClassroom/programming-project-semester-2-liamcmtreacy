@@ -223,113 +223,13 @@ void Game::update()
 		//CC Boundry Checking
 		CCenemy.checkBoundryCC(CCenemy.getCCBody().getPosition());
 		//ENEMY AND BULLET COLLISION FOR AA
-		for (int counter = 0; counter < MAXAA; counter++)
-		{
-			if (playerBullet.boundingBox().intersects(arrayAA[counter].AAboundingBox()) && playerBullet.isActive())
-			{
-				arrayAA[counter].setPositionAA();
-				enemiesKilled = enemiesKilled + 1;
-				gameScore = gameScore + 100;
-				playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
-				playerBullet.setNotActive();
-				enemyHurt.setBuffer(enemyHurtBuffer);
-				enemyHurt.play();
-				enemyHurt.setLoop(false);
-				enemyHurt.setPitch(1.0f);
-			}
-		}
-		//ENEMY AND BULLET COLLISION FOR RR
-		for (int index = 0; index < MAXRR; index++)
-		{
-			if (playerBullet.boundingBox().intersects(arrayRR[index].getBoundingBoxRR()) && playerBullet.isActive())
-			{
-				arrayRR[0].setPositionRR(1110, 0);
-				arrayRR[1].setPositionRR(500, 200);
-				enemiesKilled = enemiesKilled + 1;
-				gameScore = gameScore + 200;
-				playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
-				playerBullet.setNotActive();
-				enemyHurt.setBuffer(enemyHurtBuffer);
-				enemyHurt.play();
-				enemyHurt.setLoop(false);
-				enemyHurt.setPitch(1.0f);
-			}
-		}
-		//ENEMY AND BULLET COLLISION FOR cc
-		if (playerBullet.boundingBox().intersects(CCenemy.boundBoxCC()) && playerBullet.isActive())
-		{
-			CCenemy.setPositionCC(400, 400);
-			enemiesKilled = enemiesKilled + 1;
-			gameScore = gameScore + 250;
-			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
-			playerBullet.setNotActive();
-			enemyHurt.setBuffer(enemyHurtBuffer);
-			enemyHurt.play();
-			enemyHurt.setLoop(false);
-			enemyHurt.setPitch(1.0f);
-		}
-
+		enemyBulletCollision();
 		//PLAYER COLLISION DETECTION
 		collisionDetection();
+		//Ranking System
+		rankSystem();
 		//update Health Bar
-		if (life == 3 || life == 2)
-		{
-			m_healthBar.setFillColor(sf::Color::Yellow);
-		}
-
-		if (life == 1)
-		{
-			m_healthBar.setFillColor(sf::Color::Red);
-		}
-
-		if (life == 0)
-		{
-			gameOver = true;
-			death.setBuffer(deathBuffer);
-			death.play();
-			death.setPitch(1.0f);
-			death.setLoop(false);
-		}
-		//rank system
-		if (gameScore <= 200)
-		{
-			playerRank.setString("F");
-		}
-
-		if (gameScore >= 750)
-		{
-			playerRank.setString("E");
-		}
-
-		if (gameScore >= 2100)
-		{
-			playerRank.setString("D");
-		}
-
-		if (gameScore >= 4500)
-		{
-			playerRank.setString("C");
-		}
-
-		if (gameScore >= 7000)
-		{
-			playerRank.setString("B");
-		}
-
-		if (gameScore >= 9325)
-		{
-			playerRank.setString("A");
-		}
-
-		if (gameScore >= 12000)
-		{
-			playerRank.setString("S");
-		}
-
-		if (gameScore >= 20000)
-		{
-			playerRank.setString("S+");
-		}
+		changeHealthBarColor();
 		// enemy speed up functions
 		if (gameScore >= 3000)
 		{
@@ -353,6 +253,11 @@ void Game::update()
 		if (gameScore >= 8500)
 		{
 			CCenemy.maxSpeedCC();
+		}
+
+		if (gameScore >= 9200)
+		{
+			arrayRR[0].RRspeedUp();
 		}
 	}
 	if (gameTime % 50 == 0)
@@ -518,4 +423,124 @@ void Game::reset() // don e with some assistance from Pete
 	setUpRR();
 	playerBullet.setPositionBullet(sf::Vector2f{ 400.0f,400.0f });
 	m_healthBar.setFillColor(sf::Color::Green);
+	arrayAA[0].resetSpeed();
+	arrayAA[1].resetSpeed();
+	arrayAA[2].resetSpeed();
+	arrayRR[0].resetSpeed();
+	CCenemy.resetSpeed();
+}
+
+void Game::rankSystem()
+{
+	//rank system
+	if (gameScore <= 200)
+	{
+		playerRank.setString("F");
+	}
+
+	if (gameScore >= 750)
+	{
+		playerRank.setString("E");
+	}
+
+	if (gameScore >= 2100)
+	{
+		playerRank.setString("D");
+	}
+
+	if (gameScore >= 4500)
+	{
+		playerRank.setString("C");
+	}
+
+	if (gameScore >= 7000)
+	{
+		playerRank.setString("B");
+	}
+
+	if (gameScore >= 9325)
+	{
+		playerRank.setString("A");
+	}
+
+	if (gameScore >= 12000)
+	{
+		playerRank.setString("S");
+	}
+
+	if (gameScore >= 20000)
+	{
+		playerRank.setString("S+");
+	}
+}
+
+void Game::changeHealthBarColor()
+{
+	if (life == 3 || life == 2)
+	{
+		m_healthBar.setFillColor(sf::Color::Yellow);
+	}
+
+	if (life == 1)
+	{
+		m_healthBar.setFillColor(sf::Color::Red);
+	}
+
+	if (life == 0)
+	{
+		gameOver = true;
+		death.setBuffer(deathBuffer);
+		death.play();
+		death.setPitch(1.0f);
+		death.setLoop(false);
+	}
+}
+
+void Game::enemyBulletCollision()
+{
+	for (int counter = 0; counter < MAXAA; counter++)
+	{
+		if (playerBullet.boundingBox().intersects(arrayAA[counter].AAboundingBox()) && playerBullet.isActive())
+		{
+			arrayAA[counter].setPositionAA();
+			enemiesKilled = enemiesKilled + 1;
+			gameScore = gameScore + 100;
+			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+			playerBullet.setNotActive();
+			enemyHurt.setBuffer(enemyHurtBuffer);
+			enemyHurt.play();
+			enemyHurt.setLoop(false);
+			enemyHurt.setPitch(1.0f);
+		}
+	}
+	//ENEMY AND BULLET COLLISION FOR RR
+	for (int index = 0; index < MAXRR; index++)
+	{
+		if (playerBullet.boundingBox().intersects(arrayRR[index].getBoundingBoxRR()) && playerBullet.isActive())
+		{
+			arrayRR[0].setPositionRR(1110, 0);
+			arrayRR[1].setPositionRR(500, 200);
+			enemiesKilled = enemiesKilled + 1;
+			gameScore = gameScore + 200;
+			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+			playerBullet.setNotActive();
+			enemyHurt.setBuffer(enemyHurtBuffer);
+			enemyHurt.play();
+			enemyHurt.setLoop(false);
+			enemyHurt.setPitch(1.0f);
+		}
+	}
+	//ENEMY AND BULLET COLLISION FOR cc
+	if (playerBullet.boundingBox().intersects(CCenemy.boundBoxCC()) && playerBullet.isActive())
+	{
+		CCenemy.setPositionCC(400, 400);
+		enemiesKilled = enemiesKilled + 1;
+		gameScore = gameScore + 250;
+		playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+		playerBullet.setNotActive();
+		enemyHurt.setBuffer(enemyHurtBuffer);
+		enemyHurt.play();
+		enemyHurt.setLoop(false);
+		enemyHurt.setPitch(1.0f);
+	}
 }

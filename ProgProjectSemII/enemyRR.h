@@ -26,4 +26,6 @@ public:
 	void moveRR(const sf::Vector2f& playerPosition); // follow the player
 	void checkBoundryRR(sf::Vector2f t_pos); //boundrychecking
 	sf::FloatRect getBoundingBoxRR(); // used for collision detection
+	void RRspeedUp(); // enemies speed up when enough points are scored
+	void resetSpeed();
 };

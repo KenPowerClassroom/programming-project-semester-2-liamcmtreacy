@@ -104,3 +104,8 @@ void enemyCC::changeDirection()
 {
 	directionCC = (rand() % 4) + 1;
 }
+
+void enemyCC::resetSpeed()
+{
+	CCspeed = 4;
+}

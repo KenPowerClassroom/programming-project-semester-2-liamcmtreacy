@@ -92,3 +92,13 @@ sf::FloatRect enemyRR::getBoundingBoxRR()
 {
 	return RRSprite.getGlobalBounds();
 }
+
+void enemyRR::RRspeedUp()
+{
+	RRspeedFollowing = 4.3;
+}
+
+void enemyRR::resetSpeed()
+{
+	RRspeedFollowing = 2.5;
+}

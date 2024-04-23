@@ -77,4 +77,8 @@ public:	  // declaration of member functions
 	void collisionDetection(); // too see if the player hit the enemies
 	void setUpAudio(); // audio for game
 	void reset(); // resets the game
+	void rankSystem(); // provieds a rank based on points 
+	void changeHealthBarColor();
+	void enemyBulletCollision();
+	void speedUpEnemies();
 };

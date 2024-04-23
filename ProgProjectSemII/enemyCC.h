@@ -25,5 +25,6 @@ public:
 	void checkBoundryCC(sf::Vector2f t_pos);
 	void speedUpCC(); // speed up 1
 	void maxSpeedCC(); // FASTEST POSSIBLE SPEED WHEN POINTS REACH A CERTAIN AMOUNT
-	void changeDirection();
+	void changeDirection(); // send the enemy in a random direction
+	void resetSpeed(); // reset the speed when the player dies
 };
