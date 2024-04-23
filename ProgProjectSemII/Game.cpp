@@ -232,6 +232,10 @@ void Game::update()
 				gameScore = gameScore + 100;
 				playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 				playerBullet.setNotActive();
+				enemyHurt.setBuffer(enemyHurtBuffer);
+				enemyHurt.play();
+				enemyHurt.setLoop(false);
+				enemyHurt.setPitch(1.0f);
 			}
 		}
 		//ENEMY AND BULLET COLLISION FOR RR
@@ -245,6 +249,10 @@ void Game::update()
 				gameScore = gameScore + 200;
 				playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 				playerBullet.setNotActive();
+				enemyHurt.setBuffer(enemyHurtBuffer);
+				enemyHurt.play();
+				enemyHurt.setLoop(false);
+				enemyHurt.setPitch(1.0f);
 			}
 		}
 		//ENEMY AND BULLET COLLISION FOR cc
@@ -255,6 +263,10 @@ void Game::update()
 			gameScore = gameScore + 250;
 			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 			playerBullet.setNotActive();
+			enemyHurt.setBuffer(enemyHurtBuffer);
+			enemyHurt.play();
+			enemyHurt.setLoop(false);
+			enemyHurt.setPitch(1.0f);
 		}
 
 		//PLAYER COLLISION DETECTION
@@ -441,6 +453,10 @@ void Game::collisionDetection()
 			myPlayer.setPosition();
 			life--;
 			gameScore = gameScore - 100;
+			playerHurt.setBuffer(playerHurtBuffer);
+			playerHurt.play();
+			playerHurt.setLoop(false);
+			playerHurt.setPitch(1.0f);
 		}
 	}
 	for (int add = 0; add < MAXRR; add++)
@@ -452,6 +468,10 @@ void Game::collisionDetection()
 			gameScore = gameScore - 100;
 			arrayRR[0].setPositionRR(800, 700);
 			arrayRR[1].setPositionRR(1000, 50);
+			playerHurt.setBuffer(playerHurtBuffer);
+			playerHurt.play();
+			playerHurt.setLoop(false);
+			playerHurt.setPitch(1.0f);
 		}
 	}
 	if (myPlayer.playerBoundingBox().intersects(CCenemy.boundBoxCC()))
@@ -459,6 +479,10 @@ void Game::collisionDetection()
 		myPlayer.setPosition();
 		life--;
 		gameScore = gameScore - 100;
+		playerHurt.setBuffer(playerHurtBuffer);
+		playerHurt.play();
+		playerHurt.setLoop(false);
+		playerHurt.setPitch(1.0f);
 	}
 }
 
@@ -467,6 +491,16 @@ void Game::setUpAudio()
 	if (!deathBuffer.loadFromFile("ASSETS\\AUDIO\\death.wav"))
 	{
 		std::cout << "ERROR LOADING THE DEATH SOUND" << std::endl;
+	}
+
+	if (!enemyHurtBuffer.loadFromFile("ASSETS\\AUDIO\\hurt.wav"))
+	{
+		std::cout << "ERROR LOADING THE AUDIO FOR ENEMY HURT" << std::endl;
+	}
+
+	if (!playerHurtBuffer.loadFromFile("ASSETS\\AUDIO\\glassBreak.wav"))
+	{
+		std::cout << "error loading the player hurt audio " << std::endl;
 	}
 }
 

@@ -52,6 +52,12 @@ public:
 	sf::Sound death;
 	sf::SoundBuffer deathBuffer;
 
+	sf::Sound playerHurt;
+	sf::SoundBuffer playerHurtBuffer;
+
+	sf::Sound enemyHurt;
+	sf::SoundBuffer enemyHurtBuffer;
+
 	int gameTime = 0;
 	int enemiesKilled = 0;
 	int gameScore = 0;
