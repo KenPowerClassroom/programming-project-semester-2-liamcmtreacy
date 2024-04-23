@@ -4,6 +4,7 @@ enemyCC::enemyCC()
 {
 	loadCCenemy();
 
+	CCalive = true;
 	CCspeed = 4;
 	directionCC = SOUTH;
 }
@@ -11,6 +12,11 @@ enemyCC::enemyCC()
 void enemyCC::loadCCenemy()
 {
 	if (!CCTexture.loadFromFile("ASSETS\\SPRITES\\redGhost.png"))
+	{
+		std::cout << "error loading the third enemy" << std::endl;
+	}
+
+	if (!CCTextureRight.loadFromFile("ASSETS\\SPRITES\\redGhostright.png"))
 	{
 		std::cout << "error loading the third enemy" << std::endl;
 	}
@@ -44,10 +50,12 @@ void enemyCC::moveCC()
 	if (directionCC == EAST)
 	{
 		pos.x = pos.x + CCspeed;
+		m_enemyCCsprite.setTexture(CCTextureRight);
 	}
 	if (directionCC == WEST)
 	{
 		pos.x = pos.x - CCspeed;
+		m_enemyCCsprite.setTexture(CCTexture);
 	}
 	if (directionCC == NORTH)
 	{

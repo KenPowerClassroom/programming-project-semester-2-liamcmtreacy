@@ -7,6 +7,7 @@ class enemyCC
 {
 	sf::Sprite m_enemyCCsprite;
 	sf::Texture CCTexture;
+	sf::Texture CCTextureRight;
 
 	int CCspeed;
 	int directionCC;
