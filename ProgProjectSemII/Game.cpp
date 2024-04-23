@@ -1,7 +1,7 @@
 // Name: Liam Treacy
 // Login: started MARCH 20th 2024 9:08am
 // Date: 20/03/24
-// Approximate time taken: 
+// Approximate time taken: Currently: 23 hours (i think)
 //---------------------------------------------------------------------------
 // Project description: Magnet Misadventure is a small shooting game created by me,
 // In this game you are a magnet who is trying to destroy all the rubbish that is trying to kill you, you shoot with W S A D and MOVE 
@@ -98,6 +98,7 @@ void Game::loadContent()
 
 	setUpAA();
 	setUpRR();
+	setUpCC();
 	loadBackground();
 	setUpAudio();
 }
@@ -217,6 +218,10 @@ void Game::update()
 		//RR check boundry
 		arrayRR[0].checkBoundryRR(arrayRR[0].getRRbody().getPosition());
 		arrayRR[1].checkBoundryRR(arrayRR[1].getRRbody().getPosition());
+		//CC Movement
+		CCenemy.moveCC();
+		//CC Boundry Checking
+		CCenemy.checkBoundryCC(CCenemy.getCCBody().getPosition());
 		//ENEMY AND BULLET COLLISION FOR AA
 		for (int counter = 0; counter < MAXAA; counter++)
 		{
@@ -241,6 +246,15 @@ void Game::update()
 				playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
 				playerBullet.setNotActive();
 			}
+		}
+		//ENEMY AND BULLET COLLISION FOR cc
+		if (playerBullet.boundingBox().intersects(CCenemy.boundBoxCC()) && playerBullet.isActive())
+		{
+			CCenemy.setPositionCC(400, 400);
+			enemiesKilled = enemiesKilled + 1;
+			gameScore = gameScore + 250;
+			playerBullet.setPositionBullet(myPlayer.getBody().getPosition());
+			playerBullet.setNotActive();
 		}
 
 		//PLAYER COLLISION DETECTION
@@ -304,12 +318,17 @@ void Game::update()
 		{
 			playerRank.setString("S+");
 		}
-		// enemy speed up
+		// enemy speed up functions
 		if (gameScore >= 3000)
 		{
 			arrayAA[0].speedUp();
 			arrayAA[1].speedUp();
 			arrayAA[2].speedUp();
+		}
+
+		if (gameScore >= 4500)
+		{
+			CCenemy.speedUpCC();
 		}
 
 		if (gameScore >= 7000)
@@ -318,7 +337,17 @@ void Game::update()
 			arrayAA[1].speedEvenFaster();
 			arrayAA[2].speedEvenFaster();
 		}
+
+		if (gameScore >= 8500)
+		{
+			CCenemy.maxSpeedCC();
+		}
 	}
+	if (gameTime % 50 == 0)
+	{
+		CCenemy.changeDirection();
+	}
+	gameTime++;
 }
 void Game::draw()
 // This function draws the game world
@@ -351,6 +380,7 @@ void Game::draw()
 		window.draw(playerRank); // letter rank for player ranging from F - S+
 		window.draw(m_enemiesKilled); // how many enemies were killed
 		window.draw(m_message);  // write message to the screen
+		window.draw(CCenemy.getCCBody()); // draw enemy CC, who is a ghost
 		window.draw(m_healthBar);// health bar for player
 		window.draw(myPlayer.getBody()); // draw the player character
 
@@ -385,7 +415,7 @@ void Game::loadBackground()
 
 void Game::setUpAA() // set up positions
 {
-		arrayAA[0].setPositionAA(200, 200);
+		arrayAA[0].setPositionAA(600, 200);
 		arrayAA[1].setPositionAA(780, 100);
 		arrayAA[2].setPositionAA(1400, 150);
 }
@@ -395,6 +425,12 @@ void Game::setUpRR() // set up RR Positions
 		arrayRR[0].setPositionRR(100, 100);
 		arrayRR[1].setPositionRR(600, 150);
 }
+
+void Game::setUpCC()
+{
+	CCenemy.setPositionCC(650, 102);
+}
+
 
 void Game::collisionDetection()
 {
@@ -417,6 +453,12 @@ void Game::collisionDetection()
 			arrayRR[0].setPositionRR(800, 700);
 			arrayRR[1].setPositionRR(1000, 50);
 		}
+	}
+	if (myPlayer.playerBoundingBox().intersects(CCenemy.boundBoxCC()))
+	{
+		myPlayer.setPosition();
+		life--;
+		gameScore = gameScore - 100;
 	}
 }
 

@@ -32,7 +32,6 @@ public:
 	void setNotActive(); // if the bullet collides, this sets the bool to false, so it despawns
 	//both isActive and setNotActive, I asked Ken for help with in the Wednesday Lab
 	void loadLaserSound(); // sound for shotting
-	void enemyFire();
 
 	sf::Sound laserBlast;
 	sf::SoundBuffer laserShoot;

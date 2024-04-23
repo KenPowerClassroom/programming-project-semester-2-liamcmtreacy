@@ -11,9 +11,9 @@ class enemyRR // Rusty Raymond "RR" is a follower enemy, he is slower but follow
 	sf::Texture RRleftText; // RR Texture
 	sf::Texture RRrightTexture; // RR Texture
 
-	int speed; // how fast is he travelling
 	int RRdirection; // what direction is he facing
 	bool RRalive; // is RR alive boolean
+	float RRspeedFollowing; // rr speed
 
 public:
 

@@ -91,7 +91,7 @@ sf::FloatRect Bullet::boundingBox()
 	return m_fireballSprite.getGlobalBounds();
 }
 
-bool Bullet::bulletMove()
+bool Bullet::bulletMove() // covered with Peter Lowe in retention
 {
 	if (bulletDirection == NORTH)
 	{
@@ -115,12 +115,12 @@ bool Bullet::bulletMove()
 		return true;
 	}
 
-	if (m_fireballSprite.getPosition().y < 0.0f);
+	if (m_fireballSprite.getPosition().y < 0.0f)
 	{
 		return false;
 	}
 
-	if (m_fireballSprite.getPosition().x < 0.0f);
+	if (m_fireballSprite.getPosition().x < 0.0f)
 	{
 		return false;
 	}
@@ -144,15 +144,4 @@ void Bullet::loadLaserSound()
 	{
 		std::cout << "error loading the laser sound effect";
 	}
-}
-
-void Bullet::enemyFire()
-{
-	isBulletActive = true;
-	bulletDirection = EAST;
-	m_fireballSprite.setTexture(m_fireballRightTexture);
-	laserBlast.setBuffer(laserShoot);
-	laserBlast.play();
-	laserBlast.setPitch(1.0f);
-	laserBlast.setLoop(false);
 }

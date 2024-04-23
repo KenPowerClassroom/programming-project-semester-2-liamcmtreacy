@@ -7,9 +7,9 @@ enemyRR::enemyRR()
 	loadEnemy();
 	setPositionRR();
 
-	speed = 5;
 	RRalive = true;
 	RRdirection = EAST;
+	RRspeedFollowing = 2.5;
 }
 
 void enemyRR::loadEnemy()
@@ -61,7 +61,6 @@ void enemyRR::moveRR(const sf::Vector2f& playerPosition)
 	float distance = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 	direction /= distance;
 
-	float RRspeedFollowing = 1.75;
 	RRSprite.move(direction * RRspeedFollowing);
 	//typed myself, but got some guidance and help by Shane Moran
 
@@ -93,4 +92,3 @@ sf::FloatRect enemyRR::getBoundingBoxRR()
 {
 	return RRSprite.getGlobalBounds();
 }
-

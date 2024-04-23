@@ -13,6 +13,7 @@
 #include "enemyRR.h"
 #include "bullet.h"
 #include "gameOver.h"
+#include "enemyCC.h"
 
 class Game
 {
@@ -24,7 +25,9 @@ class Game
 	Player myPlayer;
 	enemyAA arrayAA[3]; // standard enemy, named AA
 	enemyRR arrayRR[2]; // FOLLOWER ENEMY. NAMED RUSTY RAYMOND
+	enemyCC CCenemy; // enemy CC who changes his direction
 	GameOver gameOverScreen; // game over screen
+
 
 	Bullet playerBullet; // player Bullet
 	sf::RenderWindow window;
@@ -49,10 +52,10 @@ public:
 	sf::Sound death;
 	sf::SoundBuffer deathBuffer;
 
+	int gameTime = 0;
 	int enemiesKilled = 0;
 	int gameScore = 0;
 	int life = 5;
-	float gameTimer = 0.0f;
 	bool gameOver = false;
 
 public:	  // declaration of member functions	
@@ -64,6 +67,7 @@ public:	  // declaration of member functions
 	void loadBackground(); // loads background
 	void setUpAA(); // set position of AA enemy
 	void setUpRR(); // set position of RR enemy
+	void setUpCC(); // set position of the CC enemy
 	void collisionDetection(); // too see if the player hit the enemies
 	void setUpAudio(); // audio for game
 	void reset(); // resets the game
