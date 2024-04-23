@@ -345,7 +345,7 @@ void Game::setUpRR() // set up RR Positions
 
 void Game::setUpCC()
 {
-	CCenemy.setPositionCC(650, 102);
+	CCenemy.setPositionCC(650, 50);
 }
 
 

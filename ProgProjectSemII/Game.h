@@ -80,5 +80,4 @@ public:	  // declaration of member functions
 	void rankSystem(); // provieds a rank based on points 
 	void changeHealthBarColor();
 	void enemyBulletCollision();
-	void speedUpEnemies();
 };

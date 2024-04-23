@@ -30,7 +30,7 @@ sf::Sprite enemyCC::getCCBody()
 
 void enemyCC::setPositionCC()
 {
-	m_enemyCCsprite.setPosition(650, 102);
+	m_enemyCCsprite.setPosition(650, 50);
 }
 
 void enemyCC::setPositionCC(int xPos, int yPos)
