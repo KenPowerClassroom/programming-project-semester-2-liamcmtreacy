@@ -47,8 +47,11 @@ public:
 	sf::Texture BGTexture;
 	sf::Sprite GOsprite;
 	sf::Texture GOTexture;
+	// backgrounds for the game
 	sf::RectangleShape m_healthBar;
+	// health bar
 
+	// audio
 	sf::Sound death;
 	sf::SoundBuffer deathBuffer;
 
@@ -78,6 +81,6 @@ public:	  // declaration of member functions
 	void setUpAudio(); // audio for game
 	void reset(); // resets the game
 	void rankSystem(); // provieds a rank based on points 
-	void changeHealthBarColor();
-	void enemyBulletCollision();
+	void changeHealthBarColor(); // changes health bar color
+	void enemyBulletCollision(); // enemy and bullet collision
 };

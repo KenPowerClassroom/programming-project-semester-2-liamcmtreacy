@@ -21,7 +21,7 @@ public:
 	void setPositionCC(); // set position for the enemy AA
 	void setPositionCC(int xPos, int yPos); // set position for the enemy AA
 	sf::FloatRect boundBoxCC(); // used for collision detection
-	void moveCC(); // allows movement
+	void moveCC(); // allows movement, moves in a rnadom direction, but originally just one diretcion
 	void checkBoundryCC(sf::Vector2f t_pos);
 	void speedUpCC(); // speed up 1
 	void maxSpeedCC(); // FASTEST POSSIBLE SPEED WHEN POINTS REACH A CERTAIN AMOUNT

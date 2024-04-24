@@ -421,6 +421,7 @@ void Game::reset() // don e with some assistance from Pete
 	std::cout << "reset" << std::endl;
 	setUpAA();
 	setUpRR();
+	setUpCC();
 	playerBullet.setPositionBullet(sf::Vector2f{ 400.0f,400.0f });
 	m_healthBar.setFillColor(sf::Color::Green);
 	arrayAA[0].resetSpeed();

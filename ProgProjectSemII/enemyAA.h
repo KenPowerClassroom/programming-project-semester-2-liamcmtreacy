@@ -26,7 +26,7 @@ public:
 	void setPositionAA(); // set position for the enemy AA
 	void setPositionAA(int xPos, int yPos); // set position for the enemy AA
 	sf::FloatRect boundBox(); // used for collision detection
-	void moveAA(); // allows movement
+	void moveAA(); // allows movement, either up and down, or left and right
 	void checkBoundry(sf::Vector2f t_pos);
 	void setDirectionAA(); // Direction which the array moves
 	void resetSpeed(); // this is for when the player dies the speed resets

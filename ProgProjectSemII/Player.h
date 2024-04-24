@@ -34,6 +34,6 @@ public:
 	void moveDown(); // move down
 	void boundry(sf::Vector2f t_pos); // boundry checking
 	sf::FloatRect playerBoundingBox(); // too see if the player hit an enemy, used in collision detection
-	bool isPlayerAlive();
-	bool playerdead();
+	bool isPlayerAlive(); // see if the player is alive
+	bool playerdead(); // check is the player dead
 };
